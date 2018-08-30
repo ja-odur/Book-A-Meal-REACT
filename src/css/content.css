@@ -1,0 +1,14 @@
+.side-content {
+  padding-top: 10px;
+  float: right;
+  clear: right;
+  height: 100%;
+  width: 45%;
+  /*border: 2px solid blue;*/
+}
+
+.middle-content {
+  /*border: 6px solid green;*/
+  height: 100%;
+  width: 55%;
+}

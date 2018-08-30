@@ -7,6 +7,8 @@ const SignUpForm = ({signUp, onSave, onChange, registering, errors, formErrors, 
     <div>
       <div className="form-wrapper">
         <div className="form-header">signup here</div>
+        {errors && errors.length > 0 &&
+        <div className=" white error form-control">{errors[0].signUpError}</div>}
         <form>
           <div className="input-group mb-3">
             <div className="input-size-default input-group-prepend">

@@ -22,11 +22,10 @@ export function login(data) {
         dispatch(saving({saving: false}));
         dispatch(clearErrors(data));
         setAuthorizationToken(res.data.token);
-        return true;
+        return {loggedIn:true, category:data['category']};
       })
       .catch(errors =>{
         localStorage.removeItem('token');
-        console.log('error message', errors);
         dispatch(loginFailureError({loginError: errors.response.data.message}));
         dispatch(loginFailure({user:data['username'], isLoggedIn: false}));
         setAuthorizationToken(false);

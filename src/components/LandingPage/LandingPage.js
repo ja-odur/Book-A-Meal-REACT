@@ -86,14 +86,12 @@ class LandingPage extends React.Component {
     this.props.savingActions.saving({saving: true});
     if(type === 'login'){
       this.props.loginActions.login(this.state.login)
-        .then(loggedIn => {
-          if(loggedIn){
-            this.redirect('/customer', 'Welcome to Easy Meal');
-            return loggedIn
+        .then(response => {
+          if(response.loggedIn){
+            this.redirect(response.category);
           }
 
-      })
-        .then(res=>{console.log(res)});
+      });
       this.setState({
         login: {
           category: "user",
@@ -109,9 +107,12 @@ class LandingPage extends React.Component {
         this.props.savingActions.saving({saving: false});
         return false;
       }
-      console.log('this is testing redirecting hit');
-      console.log('status before signing up.', this.state.register);
-      this.props.signUpActions.signUp(this.state.register);
+      this.props.signUpActions.signUp(this.state.register)
+        .then(response => {
+          if(response){
+            toastr.success('You successfully signed up.');
+          }
+        });
       this.props.savingActions.saving({saving: false});
     }
   };
@@ -147,9 +148,6 @@ class LandingPage extends React.Component {
     }
     if(!_.isEqual(errors, test_state_valid)){
       emptyFields = true;
-      console.log('errors', errors);
-      console.log('state errors', this.state.form_errors);
-      console.log('state regiater', this.state.register);
     }
 
     return {
@@ -202,11 +200,16 @@ class LandingPage extends React.Component {
     }
   };
 
-  redirect(url, toastMessage) {
+  redirect(category='user') {
     this.setState({saving: false});
-    this.context.router.history.push(url);
-    toastr.success(toastMessage);
-
+    if(category === 'user'){
+      this.context.router.history.push('/customer');
+      toastr.success('Welcome to EasyFood.');
+    }
+    else if(category === 'caterer'){
+      this.context.router.history.push('/caterer');
+      toastr.success('Welcome to EasyFood.');
+    }
   }
 
   render() {

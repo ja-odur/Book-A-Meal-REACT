@@ -147,7 +147,7 @@ body, html {
 /*============================= SideBar ======================================*/
 
 #sidebar {
-  margin:20px 0px;
+  margin:20px 0;
   width: 10%;
   padding: 5px;
   float: left;
@@ -159,8 +159,8 @@ body, html {
 #sidebar ul {
   list-style-type: none;
   text-align: center;
-  margin: 5px 0px;
-  padding: 0px;
+  margin: 5px 0;
+  padding: 0;
 
 }
 
@@ -175,8 +175,8 @@ body, html {
 
 .caterer {
   font-size: 1.15em;
-  margin: 0px 10%;
-  padding:3px 0px;
+  margin: 0 10%;
+  padding:3px 0;
   background-color: #495dff;
   border-radius: 5px 5px 0 0;
   color: white;
@@ -209,8 +209,8 @@ body, html {
 }
 
 .caterer_menu p {
-  margin: 0px 25%;
-  padding: 2px 0px;
+  margin: 0 25%;
+  padding: 2px 0;
   color: #4b4b4b;
   font-size: 1.05em;
   border-top:1px solid rgba(167, 167, 167, 0.5);

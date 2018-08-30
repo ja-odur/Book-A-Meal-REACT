@@ -110,10 +110,9 @@ class LandingPage extends React.Component {
         return false;
       }
       console.log('this is testing redirecting hit');
-      console.log('data', this.state.register);
-      this.props.signUpActions.register(this.state.register);
+      console.log('status before signing up.', this.state.register);
+      this.props.signUpActions.signUp(this.state.register);
       this.props.savingActions.saving({saving: false});
-      // this.redirect(this.state.register.category);
     }
   };
 
@@ -229,7 +228,7 @@ class LandingPage extends React.Component {
                 onChange={this.onChange}
                 onSave={this.onSave}
                 registering={this.props.saving.slice(-1)[0]}
-                errors={this.state.errors}
+                errors={this.props.errors}
                 formErrors={this.state.form_errors}
                 showBrandName={this.state.showBrandName}
               />

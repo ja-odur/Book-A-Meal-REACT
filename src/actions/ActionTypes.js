@@ -1,0 +1,8 @@
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
+export const LOGIN_FAILURE_ERROR = 'LOGIN_FAILURE_ERROR';
+export const SIGN_UP_FAILURE_ERROR = 'SIGN_UP_FAILURE_ERROR';
+export const REGISTER = 'REGISTER';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const SAVING = 'SAVING';

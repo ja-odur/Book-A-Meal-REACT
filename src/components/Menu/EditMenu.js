@@ -32,7 +32,7 @@ const EditMenu = ({showMenu}) => {
           </tr>
 
           <tr>
-            <td colSpan="4"><span className="btn btn-primary btn-block">Add Meal</span></td>
+            <td colSpan="4"><span className="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCart">Add Meal</span></td>
           </tr>
 
 

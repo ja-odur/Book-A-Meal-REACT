@@ -12,6 +12,11 @@ export function addMealError(data) {
   return {type: actionTypes.ADD_MEAL_FAILURE, data};
 }
 
+export function loadMealError(data) {
+  return {type: actionTypes.LOAD_MEALS_FAILURE, data};
+}
+
 export function clearErrors(data){
   return {type: actionTypes.CLEAR_ERRORS, data};
 }
+

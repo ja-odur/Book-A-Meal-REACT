@@ -6,3 +6,5 @@ export const SIGN_UP_FAILURE_ERROR = 'SIGN_UP_FAILURE_ERROR';
 export const REGISTER = 'REGISTER';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const SAVING = 'SAVING';
+export const ADD_MEAL_SUCCESS = 'ADD_MEAL_SUCCESS';
+export const ADD_MEAL_FAILURE = 'ADD_MEAL_FAILURE';

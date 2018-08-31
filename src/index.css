@@ -264,8 +264,23 @@ body, html {
   border-bottom: 1px solid white;
   padding: 3px 10px;
   width:80%;
-  margin: 0px auto 0px auto;
+  margin: 0 auto 0 auto;
   text-align: center;
+}
+.text_right {
+  text-align: right !important;
+}
+
+.not {
+  font-size: 130%;
+  text-align: center;
+  color: white;
+}
+.not-info {
+  background: rgb(0, 164, 0);
+}
+.not-danger {
+  background: red;
 }
 
 .te {

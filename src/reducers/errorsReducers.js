@@ -9,6 +9,10 @@ export default function errorReducer(state=initialState.errors, action) {
     case actionTypes.SIGN_UP_FAILURE_ERROR:
       return [...state, Object.assign({}, action.data)];
 
+    case actionTypes.ADD_MEAL_FAILURE:
+      return [...state, Object.assign({}, action.data)];
+
+
     case actionTypes.CLEAR_ERRORS:
       return [];
 

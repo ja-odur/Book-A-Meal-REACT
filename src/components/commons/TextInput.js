@@ -14,8 +14,8 @@ const TextInput = ({type, name, label, onChange, placeholder, value, error, show
   return (
     <div className={showBrandName ? "" : "hidden"}>
       <div className={inputClasses}>
-        <div className="input-group-prepend input-size-default">
-          <label className="input-group-text full" htmlFor={name}>{label}</label>
+        <div className="input-group-prepend input-size-default text-right">
+          <label className="input-group-text full text_right" htmlFor={name}>{label}</label>
         </div>
 
         <input

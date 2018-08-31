@@ -2,7 +2,7 @@ export default {
   login: [],
   register: [],
   errors: [],
-  // meals: [],
+  meals: [],
   // menus: [],
   // orders: [],
   saving:[{saving: false}],

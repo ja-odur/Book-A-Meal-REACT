@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import {bindActionCreators} from 'redux';
 import NavigationBar from '../commons/NavigationBar';
 import Footer from '../commons/Footer';
@@ -10,6 +11,7 @@ import * as menuActions from '../../actions/menuActions';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import toastr from "toastr";
+import $ from 'jquery';
 
 class CatererPage extends React.Component {
   constructor(props, context){
@@ -26,6 +28,7 @@ class CatererPage extends React.Component {
         price: ""
       },
       mealAddStatus: "",
+      meal_ids:[],
     };
 
     this.onClick = this.onClick.bind(this);
@@ -41,6 +44,9 @@ class CatererPage extends React.Component {
     event.preventDefault();
     if(type === 'addMeal'){
       this.props.mealActions.loadMeals();
+    }
+    else if (type === "addMealsToMenu") {
+      this.props.menuActions.addMealsToMenu({meal_ids: this.state.meal_ids});
     }
     else {
       this.setState({
@@ -64,12 +70,32 @@ class CatererPage extends React.Component {
   }
 
   onChange = (type=false) =>(event) => {
-    this.setState({mealAddStatus: ""});
-    const field = event.target.name;
-    const value = event.target.value;
-    let mealData = Object.assign({}, this.state.mealData);
-    mealData[field] = value;
-    return this.setState({mealData: mealData});
+    if(!type){
+      this.setState({mealAddStatus: ""});
+      const field = event.target.name;
+      const value = event.target.value;
+      let mealData = Object.assign({}, this.state.mealData);
+      mealData[field] = value;
+      return this.setState({mealData: mealData});
+    }
+
+    if(type === 'addMealToMenu'){
+      const field = event.target.name;
+      const value = event.target.value;
+
+      if(event.target.checked){
+        const mealIds = _.concat(this.state.meal_ids, parseInt(value, 10));
+        this .setState({meal_ids: mealIds});
+        console.log('mealIds added', mealIds);
+      }
+      else{
+        const mealIds = _.pull(this.state.meal_ids, parseInt(value, 10));
+        this .setState({meal_ids: mealIds});
+
+        console.log('mealIds removed', mealIds);
+
+      }
+    }
   };
 
   onSave = (type) => (event) => {
@@ -115,6 +141,7 @@ class CatererPage extends React.Component {
             mealAddStatus={this.state.mealAddStatus}
             meals={this.props.meals}
             menu={this.props.menu}
+            meal_ids={this.state.meal_ids}
           />
         </div>
         <Footer/>
@@ -122,6 +149,10 @@ class CatererPage extends React.Component {
     );
   };
 }
+
+CatererPage.contextTypes = {
+  router: PropTypes.object
+};
 
 CatererPage.propTypes = {
   savingActions: PropTypes.object.isRequired,

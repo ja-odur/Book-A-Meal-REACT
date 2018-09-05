@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MealItems = ({meals}) => {
-  console.log('meals in mealItem', meals);
+const MealItems = ({meals, onChange}) => {
   var counter = 1;
 
   return (
     <tbody>
     {meals.map(meal =>
-      <tr key={meal.id}>
+      <tr key={`meal-${meal.meal_id}`}>
         <td className="text-center">{counter++}</td>
         <td className="text-center">{meal.name}</td>
         <td className="text-center">UGX {meal.price}</td>
         <td>
           <label className="switch text-center">
-            <input type="checkbox"/>
+            <input type="checkbox" value={meal.meal_id} onChange={onChange('addMealToMenu')} />
             <span className="slider round"></span>
           </label>
         </td>
@@ -27,6 +26,7 @@ const MealItems = ({meals}) => {
 
 MealItems.propTypes = {
   meals: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default MealItems;

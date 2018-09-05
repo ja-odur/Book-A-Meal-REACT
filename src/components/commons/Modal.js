@@ -2,7 +2,7 @@ import React from 'react';
 import  MealItems from '../Meal/MeaItems';
 import PropTypes from 'prop-types';
 
-const Modal = ({meals, onClick}) => {
+const Modal = ({meals, meal_ids, onChange, onClick}) => {
   return (
     <div>
 
@@ -22,13 +22,15 @@ const Modal = ({meals, onClick}) => {
               <table className="table table-hover">
                 <MealItems
                   meals={meals}
+                  onChange={onChange}
+                  meal_ids={meal_ids}
                 />
               </table>
 
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-              <button className="btn btn-primary" onClick={onClick("addMeal")}>Add To Menu</button>
+              <button className="btn btn-primary" data-dismiss="modal" onClick={onClick("addMealsToMenu")}>Add To Menu</button>
             </div>
           </div>
         </div>
@@ -40,6 +42,9 @@ const Modal = ({meals, onClick}) => {
 
 Modal.propTypes = {
   meals: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  meal_ids: PropTypes.array.isRequired,
 };
 
 export default Modal;

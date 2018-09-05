@@ -5,7 +5,7 @@ import Modal from '../commons/Modal';
 import PendingOrders from '../Order/PendingOrders';
 import PropTypes from 'prop-types';
 
-const ContentCaterer = ({tabs, mealData, meals, onChange, onSave, saving, mealAddStatus, errors, onClick, menu}) => {
+const ContentCaterer = ({tabs, mealData, meals, onChange, onSave, saving, mealAddStatus, errors, onClick, menu, meal_ids}) => {
   return(
     <div id="content">
 
@@ -31,7 +31,9 @@ const ContentCaterer = ({tabs, mealData, meals, onChange, onSave, saving, mealAd
         />
         <Modal
           meals={meals}
+          meal_ids={meal_ids}
           onClick={onClick}
+          onChange={onChange}
         />
 
       </div>
@@ -45,6 +47,7 @@ ContentCaterer.propTypes = {
   mealData: PropTypes.object.isRequired,
   meals: PropTypes.array.isRequired,
   menu: PropTypes.array.isRequired,
+  meal_ids: PropTypes.array.isRequired,
   saving: PropTypes.array,
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,

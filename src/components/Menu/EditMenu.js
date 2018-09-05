@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EditMenu = ({showMenu}) => {
+const EditMenu = ({showMenu, onClick}) => {
   return (
     <div className={showMenu ? "" : "hidden"} id="edit_menu">
       <p className="caterer text-center">DAILY MENU</p>
@@ -32,7 +32,7 @@ const EditMenu = ({showMenu}) => {
           </tr>
 
           <tr>
-            <td colSpan="4"><span className="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCart">Add Meal</span></td>
+            <td colSpan="4"><span className="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCart" onClick={onClick("addMeal")}>Add Meal</span></td>
           </tr>
 
 
@@ -40,11 +40,12 @@ const EditMenu = ({showMenu}) => {
       </table>
 
     </div>
-  )
+  );
 };
 
 EditMenu.propTypes = {
   showMenu: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default EditMenu;

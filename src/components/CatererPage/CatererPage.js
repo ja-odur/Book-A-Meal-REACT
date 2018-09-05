@@ -35,13 +35,18 @@ class CatererPage extends React.Component {
 
   onClick = (type) => (event) => {
     event.preventDefault();
-    this.setState({
-      activeTab: {
-        edit_menu: CatererPage.showItem(type, 'showMenu'),
-        add_meal: CatererPage.showItem(type, 'showMeal'),
-        mealAddStatus: "",
-  },
-    });
+    if(type === 'addMeal'){
+      this.props.mealActions.loadMeals();
+    }
+    else {
+      this.setState({
+        activeTab: {
+          edit_menu: CatererPage.showItem(type, 'showMenu'),
+          add_meal: CatererPage.showItem(type, 'showMeal'),
+          mealAddStatus: "",
+        },
+      });
+    }
   };
 
   static showItem(inString, compareString) {
@@ -96,8 +101,10 @@ class CatererPage extends React.Component {
             saving={this.props.saving}
             onChange={this.onChange}
             onSave={this.onSave}
+            onClick={this.onClick}
             errors={this.props.errors}
             mealAddStatus={this.state.mealAddStatus}
+            meals={this.props.meals}
           />
         </div>
         <Footer/>
@@ -107,9 +114,10 @@ class CatererPage extends React.Component {
 }
 
 CatererPage.propTypes = {
-  savingActions: PropTypes.func.isRequired,
-  mealActions: PropTypes.func.isRequired,
-  saving: PropTypes.object.isRequired,
+  savingActions: PropTypes.object.isRequired,
+  mealActions: PropTypes.object.isRequired,
+  saving: PropTypes.array.isRequired,
+  meals: PropTypes.array.isRequired,
   errors: PropTypes.array
 };
 
@@ -117,6 +125,7 @@ function mapStateToProps(state, ownProps) {
   return {
     saving: state.saving,
     errors: state.errors,
+    meals: state.meals,
   };
 }
 

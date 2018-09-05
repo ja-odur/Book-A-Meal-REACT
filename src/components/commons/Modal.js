@@ -2,11 +2,11 @@ import React from 'react';
 import  MealItems from '../Meal/MeaItems';
 import PropTypes from 'prop-types';
 
-const Modal = ({meals}) => {
+const Modal = ({meals, onClick}) => {
   return (
     <div>
 
-      <div className="modal fade index-high" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade index-high" id="modalCart" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content ">
 
@@ -20,62 +20,15 @@ const Modal = ({meals}) => {
             <div className="modal-body">
 
               <table className="table table-hover">
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>meal name</td>
-                    <td>UGX 10000</td>
-                    <td>
-                      <label className="switch">
-                        <input type="checkbox"/>
-                        <span className="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>meal name</td>
-                    <td>UGX 10000</td>
-                    <td>
-                      <label className="switch">
-                        <input type="checkbox"/>
-                        <span className="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>meal name</td>
-                    <td>UGX 10000</td>
-                    <td>
-                      <label className="switch">
-                        <input type="checkbox"/>
-                        <span className="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>meal name</td>
-                    <td>UGX 10000</td>
-                    <td>
-                      <label className="switch">
-                        <input type="checkbox"/>
-                        <span className="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-
-                </tbody>
+                <MealItems
+                  meals={meals}
+                />
               </table>
 
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-              <button className="btn btn-primary">Add To Menu</button>
+              <button className="btn btn-primary" onClick={onClick("addMeal")}>Add To Menu</button>
             </div>
           </div>
         </div>
@@ -86,7 +39,7 @@ const Modal = ({meals}) => {
 };
 
 Modal.propTypes = {
-  meals: PropTypes.object.isRequired,
+  meals: PropTypes.array.isRequired,
 };
 
 export default Modal;

@@ -3,7 +3,5 @@ export default {
   register: [],
   errors: [],
   meals: [],
-  // menus: [],
-  // orders: [],
   saving:[{saving: false}],
 };

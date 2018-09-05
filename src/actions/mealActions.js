@@ -33,9 +33,11 @@ export function loadMeals() {
   return function (dispatch) {
     return getMeals()
       .then(response => {
+        console.log('meals', response.data.message);
         dispatch(loadMealsSuccess(response.data.message));
       })
       .catch(errors => {
+        console.log('errors',errors);
         dispatch(loadMealError({loadMealErrors: errors.response.data.message}));
       });
   };

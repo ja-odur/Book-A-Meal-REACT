@@ -9,6 +9,9 @@ export default function menuReducer(state=initialState.menu, action) {
     case actionTypes.ADD_MEALS_TO_MENU_FAILURE:
       return state;
 
+    case actionTypes.REMOVE_MEAL_FROM_MENU_SUCCESS:
+      return state;
+
     default:
       return state;
   }

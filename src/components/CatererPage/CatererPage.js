@@ -11,7 +11,6 @@ import * as menuActions from '../../actions/menuActions';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import toastr from "toastr";
-import $ from 'jquery';
 
 class CatererPage extends React.Component {
   constructor(props, context){
@@ -40,13 +39,17 @@ class CatererPage extends React.Component {
     this.props.menuActions.loadMenu();
   }
 
-  onClick = (type) => (event) => {
+  onClick = (type, meal_id=false) => (event) => {
     event.preventDefault();
     if(type === 'addMeal'){
       this.props.mealActions.loadMeals();
     }
     else if (type === "addMealsToMenu") {
       this.props.menuActions.addMealsToMenu({meal_ids: this.state.meal_ids});
+    }
+    else if (type === 'removeMealFromMenu'){
+      this.props.menuActions.removeMealFromMenu({meal_id: meal_id});
+      console.log('value in remove', meal_id);
     }
     else {
       this.setState({

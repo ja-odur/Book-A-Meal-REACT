@@ -6,6 +6,7 @@ import SideBarCaterer from '../commons/SideBarCaterer';
 import ContentCaterer from '../commons/ContentCaterer';
 import * as savingActions from '../../actions/savingActions';
 import * as mealActions from '../../actions/mealActions';
+import * as menuActions from '../../actions/menuActions';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import toastr from "toastr";
@@ -30,7 +31,10 @@ class CatererPage extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
+  }
 
+  componentWillMount(){
+    this.props.menuActions.loadMenu();
   }
 
   onClick = (type) => (event) => {
@@ -47,11 +51,16 @@ class CatererPage extends React.Component {
         },
       });
     }
+
+    if(type === 'showMenu'){
+      this.props.menuActions.loadMenu();
+
+    }
+
   };
 
   static showItem(inString, compareString) {
     return inString === compareString;
-
   }
 
   onChange = (type=false) =>(event) => {
@@ -105,6 +114,7 @@ class CatererPage extends React.Component {
             errors={this.props.errors}
             mealAddStatus={this.state.mealAddStatus}
             meals={this.props.meals}
+            menu={this.props.menu}
           />
         </div>
         <Footer/>
@@ -118,6 +128,7 @@ CatererPage.propTypes = {
   mealActions: PropTypes.object.isRequired,
   saving: PropTypes.array.isRequired,
   meals: PropTypes.array.isRequired,
+  menu: PropTypes.array.isRequired,
   errors: PropTypes.array
 };
 
@@ -126,6 +137,7 @@ function mapStateToProps(state, ownProps) {
     saving: state.saving,
     errors: state.errors,
     meals: state.meals,
+    menu: state.menu,
   };
 }
 
@@ -133,6 +145,7 @@ function mapDispatchToProps(dispatch) {
   return {
     savingActions: bindActionCreators(savingActions, dispatch),
     mealActions: bindActionCreators(mealActions, dispatch),
+    menuActions: bindActionCreators(menuActions, dispatch),
   };
 }
 

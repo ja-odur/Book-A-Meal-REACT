@@ -1,5 +1,6 @@
 import * as actionTypes from  './ActionTypes';
-import {getMenuPerCaterer, addMealsToMenuApi, removeMealFromMenuApi} from '../api/api';
+import {getMenuPerCaterer, addMealsToMenuApi, removeMealFromMenuApi, getAllMenusAPi} from '../api/api';
+import _ from 'lodash';
 
 function loadMenuSuccess(data){
   return {type: actionTypes.LOAD_MENU_SUCCESS, data};
@@ -23,6 +24,14 @@ function removeMealFromMenuSuccess(data) {
 
 function removeMealFromMenuFailure(data) {
   return {type: actionTypes.REMOVE_MEAL_FROM_MENU_FAILURE, data};
+}
+
+function getAllMenusSuccess(data){
+  return {type: actionTypes.GET_ALL_MENUS_SUCCESS, data};
+}
+
+function getAllMenusFailure(data) {
+  return {type: actionTypes.GET_ALL_MENUS_FAILURE, data};
 }
 
 export function loadMenu() {
@@ -64,6 +73,28 @@ export function removeMealFromMenu(data){
       })
       .catch(errors => {
         dispatch(removeMealFromMenuFailure(errors.response.data.message));
+      });
+  };
+}
+
+export function getAllMenus() {
+  return function (dispatch) {
+    return getAllMenusAPi()
+      .then(response => {
+        var menu = response.data.message.MENU;
+        var newMenu = [];
+
+        _.forEach(menu, function(value, key) {
+          console.log('key', key, 'value', value);
+          var menuItem = _.concat([], [[key, value]]);
+          newMenu = _.concat(newMenu, menuItem);
+        });
+        console.log('new menu in actions', newMenu);
+
+        dispatch(getAllMenusSuccess(newMenu));
+      })
+      .catch(errors => {
+        dispatch(getAllMenusFailure(errors.response.data.message));
       });
   };
 }

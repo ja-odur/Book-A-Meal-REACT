@@ -3,6 +3,9 @@ import NavigationBar from '../commons/NavigationBar';
 import Footer from '../commons/Footer';
 import SideBar from '../commons/SideBar';
 import Content from '../commons/Content';
+import {bindActionCreators} from 'redux';
+import * as menuActions from '../../actions/menuActions';
+import * as savingActions from '../../actions/savingActions';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -20,6 +23,10 @@ class CustomerPage extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+  }
+
+  componentWillMount(){
+    this.props.menuActions.getAllMenus()
   }
 
   onClick = (type) => (event) => {
@@ -50,6 +57,7 @@ class CustomerPage extends React.Component {
           />
           <Content
             tabs={this.state.activeTab}
+            menus={this.props.menus}
           />
         </div>
         <Footer/>
@@ -59,18 +67,21 @@ class CustomerPage extends React.Component {
 }
 
 CustomerPage.propTypes = {
-  // active: PropTypes.bool.isRequired,
+  menus: PropTypes.object.isRequired,
+  savingActions: PropTypes.object.isRequired,
+  menuActions: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-
+    menus: state.menus
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-
+    savingActions: bindActionCreators(savingActions, dispatch),
+    menuActions: bindActionCreators(menuActions, dispatch),
   };
 }
 

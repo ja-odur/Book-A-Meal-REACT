@@ -8,6 +8,7 @@ const getMealsUrl = `${url}/api/v1/meals/`;
 const getMenuPerCatererUrl = `${url}/api/v1/caterer/menu/`;
 const addMealsToMenuUrl = `${url}/api/v1/menu/meals/add/`;
 const removeMealFromMenuUrl = `${url}/api/v1/menu/meal/`;
+const getAllMenusUrl = `${url}/api/v1/menu/`;
 
 export function loginApi(loginData) {
   return axios.post(loginUrl, loginData);
@@ -35,6 +36,10 @@ export function addMealsToMenuApi(mealIds) {
 
 export function removeMealFromMenuApi(mealId) {
   return axios.post(removeMealFromMenuUrl, mealId);
+}
+
+export function getAllMenusAPi() {
+  return axios.get(getAllMenusUrl);
 }
 
 export function setAuthorizationToken(token){

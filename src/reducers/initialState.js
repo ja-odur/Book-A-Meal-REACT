@@ -4,5 +4,6 @@ export default {
   errors: [],
   meals: [],
   menu: [],
+  menus: [],
   saving:[{saving: false}],
 };

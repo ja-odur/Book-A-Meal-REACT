@@ -5,7 +5,7 @@ import OrderHistory from '../Order/OrderHistory';
 import Point from '../Point/Point';
 import PropTypes from 'prop-types';
 
-const Content = ({tabs}) => {
+const Content = ({tabs, menus}) => {
 
     return(
       <div id="content">
@@ -17,6 +17,7 @@ const Content = ({tabs}) => {
         <div className="middle-content">
           <Menu
             showMenu={tabs.menu}
+            menus={menus}
           />
           <ChangeOrder
             showOrder={tabs.change_order}
@@ -27,11 +28,12 @@ const Content = ({tabs}) => {
         </div>
       </div>
 
-    )
+    );
 };
 
 Content.propTypes = {
   tabs: PropTypes.object.isRequired,
+  menus: PropTypes.object.isRequired,
 }
 ;
 export default Content;

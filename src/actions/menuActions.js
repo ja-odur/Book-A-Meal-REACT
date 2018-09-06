@@ -29,12 +29,10 @@ export function loadMenu() {
   return function (dispatch) {
     return getMenuPerCaterer()
       .then(response => {
-        console.log('response', response.data.message.MENU);
           dispatch(loadMenuSuccess(response.data.message.MENU));
         }
       )
       .catch(errors => {
-        console.log('errors in menu', errors);
         dispatch(loadMenuFailure(errors.response.data.message));
 
       });
@@ -50,7 +48,6 @@ export function addMealsToMenu(data){
         }
       )
       .catch(errors => {
-        console.log('errors', errors);
           dispatch(addMealsToMenuFailure(errors.response.data.message));
         }
       );

@@ -110,7 +110,10 @@ class LandingPage extends React.Component {
       this.props.signUpActions.signUp(this.state.register)
         .then(response => {
           if(response){
-            toastr.success('You successfully signed up.');
+            if (response.loggedIn){
+              this.redirect(response.category);
+              toastr.success('You successfully signed up.');
+            }
           }
         });
       this.props.savingActions.saving({saving: false});

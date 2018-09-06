@@ -7,12 +7,14 @@ export function signUp(data) {
     return signUpApi(data)
       .then(response => {
         dispatch(login(data));
-        return true;
+        return {loggedIn:true, category:data['category']};
+
       })
       .catch(errors =>{
         dispatch(signUpFailureError({signUpError: errors.response.data.message}));
         dispatch(loginFailure({user:data['username'], isLoggedIn: false}));
-        return false;
+        return {loggedIn:false, category:data['category']};
+
       });
   };
 }

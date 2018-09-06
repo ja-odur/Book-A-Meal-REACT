@@ -5,7 +5,7 @@ import OrderHistory from '../Order/OrderHistory';
 import Point from '../Point/Point';
 import PropTypes from 'prop-types';
 
-const Content = ({tabs, menus, orders, onClick}) => {
+const Content = ({tabs, menus, orders, orderHistory, onClick}) => {
 
     return(
       <div id="content">
@@ -27,6 +27,8 @@ const Content = ({tabs, menus, orders, onClick}) => {
           />
           <OrderHistory
             showHistory={tabs.order_history}
+            orderHistory={orderHistory}
+            onClick={onClick}
           />
         </div>
       </div>
@@ -39,6 +41,7 @@ Content.propTypes = {
   menus: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   orders: PropTypes.array.isRequired,
+  orderHistory: PropTypes.array.isRequired,
 };
 
 export default Content;

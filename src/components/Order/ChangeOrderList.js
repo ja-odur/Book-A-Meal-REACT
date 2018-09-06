@@ -24,6 +24,12 @@ const ChangeOrderList = ({orders, onClick}) => {
       </tr>
     )}
 
+    {orders && orders.length <= 0 &&
+    <td colSpan="8" className="text-center">
+      <span className="btn btn-outline-primary btn-block">No Orders Placed</span>
+    </td>
+    }
+
       <tr>
         <td colSpan="5">TOTAL</td>
         <td colSpan="2" className="text-right"><span className="btn btn-outline-primary">UGX {total}</span></td>

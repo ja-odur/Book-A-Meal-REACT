@@ -1,38 +1,17 @@
 import React from 'react';
 import PropTyes from 'prop-types';
+import OrderHistoryList from './OrderHistoryList';
 
-const OrderHistory = ({showHistory}) => {
+const OrderHistory = ({showHistory, onClick, orderHistory}) => {
   return (
     <div className={showHistory ? "" : "hidden"} id="order_history">
       <div className="order_history">ORDER HISTORY</div>
 
       <table className="table table-striped table-light caterer-menu">
-        <tbody>
-        <tr>
-          <td colSpan="2" className="text-center">Beef with rice</td>
-          <td className="text-center"> Caterer 1</td>
-          <td className="text-center" ><span className="btn btn-primary btn-sm">Point</span></td>
-        </tr>
-
-        <tr>
-          <td colSpan="2" className="text-center">Beef with rice</td>
-          <td className="text-center"> Caterer 1</td>
-          <td className="text-center" ><span className="btn btn-primary btn-sm">Point</span></td>
-        </tr>
-
-        <tr>
-          <td colSpan="2" className="text-center">Beef with rice</td>
-          <td className="text-center"> Caterer 1</td>
-          <td className="text-center" ><span className="btn btn-primary btn-sm">Point</span></td>
-        </tr>
-
-        <tr>
-          <td colSpan="2" className="text-center">Beef with rice</td>
-          <td className="text-center"> Caterer 1</td>
-          <td className="text-center" ><span className="btn btn-primary btn-sm">Point</span></td>
-        </tr>
-
-        </tbody>
+        <OrderHistoryList
+          orderHistory={orderHistory}
+          onClick={onClick}
+        />
       </table>
 
     </div>
@@ -41,6 +20,8 @@ const OrderHistory = ({showHistory}) => {
 
 OrderHistory.propTypes = {
   showHistory: PropTyes.bool.isRequired,
+  orderHistory: PropTyes.array.isRequired,
+  onClick: PropTyes.func.isRequired,
 };
 
 export default OrderHistory;

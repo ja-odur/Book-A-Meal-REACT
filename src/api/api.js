@@ -12,6 +12,8 @@ const getAllMenusUrl = `${url}/api/v1/menu/`;
 const orderMealUrl = `${url}/api/v1/orders/`;
 const getOrderPlacedUrl = `${url}/api/v1/orders/placed`;
 const removeOrderUrl = `${url}/api/v1/orders/`;
+const orderHistoryUrl = `${url}/api/v1/orders/history`;
+const pointMealUrl = `${url}/api/v1/meals/point/`;
 
 export function loginApi(loginData) {
   return axios.post(loginUrl, loginData);
@@ -55,6 +57,14 @@ export function getOrdersCustomerAPI() {
 
 export function removeOrderAPI(order_id) {
   return axios.delete(`${removeOrderUrl}${order_id}`);
+}
+
+export function orderHistoryAPI() {
+  return axios.get(orderHistoryUrl);
+}
+
+export function pointMealAPI(meal_id) {
+  return axios.post(`${pointMealUrl}${meal_id}`);
 }
 
 export function setAuthorizationToken(token){

@@ -1,13 +1,10 @@
 import * as actionTypes from '../actions/ActionTypes';
 import initialState from './initialState';
 
-export default function mealReducer(state=initialState.meals, action) {
+export default function orderReducer(state=initialState.orderHistory, action) {
   switch(action.type){
-    case actionTypes.LOAD_MEALS_SUCCESS:
+    case actionTypes.ORDER_HISTORY_SUCCESS:
       return action.data;
-
-    case actionTypes.POINT_MEAL_SUCCESS:
-      return state;
 
     default:
       return state;

@@ -5,6 +5,7 @@ import SideBar from '../commons/SideBar';
 import Content from '../commons/Content';
 import {bindActionCreators} from 'redux';
 import * as menuActions from '../../actions/menuActions';
+import * as mealActions from '../../actions/mealActions';
 import * as savingActions from '../../actions/savingActions';
 import * as orderActions from '../../actions/orderActions';
 import PropTypes from 'prop-types';
@@ -30,6 +31,7 @@ class CustomerPage extends React.Component {
   componentWillMount(){
     this.props.menuActions.getAllMenus();
     this.props.orderActions.getOrdersCustomer();
+    this.props.orderActions.viewOrderHistory();
   }
 
   onClick = (type, id=false) => (event) => {
@@ -46,8 +48,11 @@ class CustomerPage extends React.Component {
           }
         });
     }
+    else if (type === "PointMeal"){
+      console.log('point id', id);
+      this.props.mealActions.pointMeal(id);
+    }
     else if (type === 'DeleteOrder'){
-      console.log('order id', id);
       this.props.orderActions.removeOrder(id)
         .then(response => {
           if(response.success){
@@ -57,8 +62,6 @@ class CustomerPage extends React.Component {
             toastr.error('Sorry, orders can not be deleted beyond one hour of existence.');
           }
         });
-      // this.props.orderActions.getOrdersCustomer();
-
     }
     else{
       this.setState({
@@ -92,6 +95,7 @@ class CustomerPage extends React.Component {
             menus={this.props.menus}
             onClick={this.onClick}
             orders={this.props.orders}
+            orderHistory={this.props.orderHistory}
           />
         </div>
         <Footer/>
@@ -106,12 +110,16 @@ CustomerPage.propTypes = {
   menuActions: PropTypes.object.isRequired,
   orderActions: PropTypes.object.isRequired,
   orders: PropTypes.array.isRequired,
+  orderHistory: PropTypes.array.isRequired,
+  mealActions: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     menus: state.menus,
     orders: state.orders,
+    orderHistory: state.orderHistory,
+    meals: state.meals,
   };
 }
 
@@ -120,6 +128,7 @@ function mapDispatchToProps(dispatch) {
     savingActions: bindActionCreators(savingActions, dispatch),
     menuActions: bindActionCreators(menuActions, dispatch),
     orderActions: bindActionCreators(orderActions, dispatch),
+    mealActions: bindActionCreators(mealActions, dispatch),
   };
 }
 

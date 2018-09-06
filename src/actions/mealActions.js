@@ -1,6 +1,7 @@
 import * as actionTypes from './ActionTypes';
-import {addMealApi, getMeals} from '../api/api';
+import {addMealApi, getMeals, pointMealAPI} from '../api/api';
 import {clearErrors, addMealError, loadMealError} from './errorsActions';
+import {viewOrderHistory} from './orderActions';
 import {saving} from './savingActions';
 
 function addMealSuccess(data){
@@ -9,6 +10,14 @@ function addMealSuccess(data){
 
 function loadMealsSuccess(data){
   return {type: actionTypes.LOAD_MEALS_SUCCESS, data};
+}
+
+function pointMealSuccess(data) {
+  return {type:actionTypes.POINT_MEAL_SUCCESS, data};
+}
+
+function pointMealFailure(data) {
+  return {type: actionTypes.POINT_MEAL_FAILURE, data};
 }
 
 export function addMeal(data){
@@ -39,6 +48,19 @@ export function loadMeals() {
       .catch(errors => {
         console.log('errors',errors);
         dispatch(loadMealError({loadMealErrors: errors.response.data.message}));
+      });
+  };
+}
+
+export function pointMeal(meal_id) {
+  return function (dispatch) {
+    return pointMealAPI(meal_id)
+      .then(response => {
+        dispatch(pointMealSuccess(response.data.message));
+        dispatch(viewOrderHistory());
+      })
+      .catch(errors => {
+        dispatch(pointMealFailure(errors.response.data.message));
       });
   };
 }

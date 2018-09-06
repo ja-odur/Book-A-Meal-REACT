@@ -6,5 +6,6 @@ export default {
   menu: [],
   menus: [],
   orders: [],
+  orderHistory: [],
   saving:[{saving: false}],
 };

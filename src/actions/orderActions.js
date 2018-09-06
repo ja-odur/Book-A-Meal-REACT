@@ -1,5 +1,5 @@
 import * as actionTypes from  './ActionTypes';
-import {orderMealAPI, getOrdersCustomerAPI, removeOrderAPI} from '../api/api';
+import {orderMealAPI, getOrdersCustomerAPI, removeOrderAPI, orderHistoryAPI} from '../api/api';
 
 function orderMealSuccess(data) {
   return {type: actionTypes.ORDER_MEAL_SUCCESS, data};
@@ -25,6 +25,14 @@ function removeOrderFailure(data) {
   return {type: actionTypes.REMOVE_ORDER_FAILURE, data};
 }
 
+function viewOrderHistorySuccess(data) {
+  return {type: actionTypes.ORDER_HISTORY_SUCCESS, data};
+}
+
+function viewOrderHistoryFailure(data) {
+  return {type: actionTypes.ORDER_HISTORY_FAILURE, data};
+}
+
 export function orderMeal(meal_id) {
   return function (dispatch) {
     return orderMealAPI(meal_id)
@@ -44,7 +52,14 @@ export function getOrdersCustomer() {
   return function (dispatch) {
     return getOrdersCustomerAPI()
       .then(response => {
-        dispatch(getOrdersCustomerSuccess(response.data.message));
+        var orders;
+        if(response.data.message === "No orders placed"){
+          orders = [];
+        }
+        else {
+          orders = response.data.message;
+        }
+        dispatch(getOrdersCustomerSuccess(orders));
       })
       .catch(errors => {
         dispatch(getOrdersCustomerFailure(errors.response.data.message));
@@ -64,6 +79,25 @@ export function removeOrder(order_id) {
         dispatch(removeOrderFailure(errors.response.data.message));
         return {success: false, message: errors.response.data.message};
 
+      });
+  };
+}
+
+export function viewOrderHistory() {
+  return function (dispatch) {
+    return orderHistoryAPI()
+      .then(response => {
+        let orderHistory;
+        if(response.data.message === 'No order history'){
+          orderHistory = [];
+        }
+        else{
+          orderHistory = response.data.message;
+        }
+        dispatch(viewOrderHistorySuccess(orderHistory));
+      })
+      .catch(errors => {
+        dispatch(viewOrderHistoryFailure(errors.response.data.message));
       });
   };
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTyes from 'prop-types';
 
 const OrderHistory = ({showHistory}) => {
-  console.log('showHistory' ,showHistory);
   return (
     <div className={showHistory ? "" : "hidden"} id="order_history">
       <div className="order_history">ORDER HISTORY</div>

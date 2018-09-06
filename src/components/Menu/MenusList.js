@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MenusList = ({menus, onClick}) => {
-  console.log('menus in list', menus);
   return (
     <div>
       { menus.map(menu =>
@@ -10,7 +9,7 @@ const MenusList = ({menus, onClick}) => {
         <table className="table table-striped table-light caterer-menu rounded">
             <thead className="rounded">
               <tr className="rounded">
-                <td colSpan="4" key={menu[0]} className="caterer text-center">
+                <td colSpan="4" key={`menu-list-${menu[0]}`} className="caterer text-center">
                   {menu[0]}
                 </td>
               </tr>
@@ -34,7 +33,7 @@ const MenusList = ({menus, onClick}) => {
 };
 
 MenusList.propTypes = {
-  menus: PropTypes.object.isRequired,
+  menus: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

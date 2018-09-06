@@ -28,14 +28,14 @@ class CustomerPage extends React.Component {
   }
 
   componentWillMount(){
-    this.props.menuActions.getAllMenus()
+    this.props.menuActions.getAllMenus();
+    this.props.orderActions.getOrdersCustomer();
   }
 
   onClick = (type, id=false) => (event) => {
     event.preventDefault();
 
     if(type === "orderMeal"){
-      console.log('menu id', id);
       this.props.orderActions.orderMeal(id)
         .then(response => {
           if(response.success){
@@ -46,6 +46,20 @@ class CustomerPage extends React.Component {
           }
         });
     }
+    else if (type === 'DeleteOrder'){
+      console.log('order id', id);
+      this.props.orderActions.removeOrder(id)
+        .then(response => {
+          if(response.success){
+            toastr.success(response.message);
+          }
+          else {
+            toastr.error('Sorry, orders can not be deleted beyond one hour of existence.');
+          }
+        });
+      // this.props.orderActions.getOrdersCustomer();
+
+    }
     else{
       this.setState({
         activeTab: {
@@ -55,6 +69,7 @@ class CustomerPage extends React.Component {
           notifications: CustomerPage.showItem(type, 'showNotification')
         },
       });
+      this.props.orderActions.getOrdersCustomer();
     }
   };
 
@@ -76,6 +91,7 @@ class CustomerPage extends React.Component {
             tabs={this.state.activeTab}
             menus={this.props.menus}
             onClick={this.onClick}
+            orders={this.props.orders}
           />
         </div>
         <Footer/>
@@ -85,15 +101,17 @@ class CustomerPage extends React.Component {
 }
 
 CustomerPage.propTypes = {
-  menus: PropTypes.object.isRequired,
+  menus: PropTypes.array.isRequired,
   savingActions: PropTypes.object.isRequired,
   menuActions: PropTypes.object.isRequired,
   orderActions: PropTypes.object.isRequired,
+  orders: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    menus: state.menus
+    menus: state.menus,
+    orders: state.orders,
   };
 }
 

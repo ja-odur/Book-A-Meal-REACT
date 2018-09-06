@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SideBar =({tabs, onClick}) => {
-console.log('tabs sidebar', tabs);
   return (
      <div id="sidebar">
        <ul>

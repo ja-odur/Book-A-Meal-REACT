@@ -6,6 +6,12 @@ export default function orderReducer(state=initialState.orders, action) {
     case actionTypes.ORDER_MEAL_SUCCESS:
       return state;
 
+    case actionTypes.GET_ORDERS_CUSTOMER_SUCCESS:
+      return action.data;
+
+    case actionTypes.REMOVE_ORDER_SUCCESS:
+      return state;
+
     default:
       return state;
   }

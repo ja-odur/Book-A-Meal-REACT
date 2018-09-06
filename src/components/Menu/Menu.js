@@ -15,7 +15,7 @@ const Menu = ({showMenu, menus, onClick}) => {
 
 Menu.propTypes = {
   showMenu: PropTypes.bool.isRequired,
-  menus: PropTypes.object.isRequired,
+  menus: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

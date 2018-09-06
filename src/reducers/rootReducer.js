@@ -6,6 +6,7 @@ import saving from './savingReducer';
 import meals from './mealReducer';
 import menu from './menuReducer';
 import menus from './menusReducer';
+import orders from './orderReducers';
 
 const rootReducer = combineReducers({
   login,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   menu,
   menus,
   errors,
+  orders,
   saving,
 });
 

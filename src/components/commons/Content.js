@@ -5,7 +5,7 @@ import OrderHistory from '../Order/OrderHistory';
 import Point from '../Point/Point';
 import PropTypes from 'prop-types';
 
-const Content = ({tabs, menus}) => {
+const Content = ({tabs, menus, onClick}) => {
 
     return(
       <div id="content">
@@ -18,6 +18,7 @@ const Content = ({tabs, menus}) => {
           <Menu
             showMenu={tabs.menu}
             menus={menus}
+            onClick={onClick}
           />
           <ChangeOrder
             showOrder={tabs.change_order}
@@ -34,6 +35,7 @@ const Content = ({tabs, menus}) => {
 Content.propTypes = {
   tabs: PropTypes.object.isRequired,
   menus: PropTypes.object.isRequired,
-}
-;
+  onClick: PropTypes.func.isRequired,
+};
+
 export default Content;

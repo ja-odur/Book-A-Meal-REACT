@@ -5,5 +5,6 @@ export default {
   meals: [],
   menu: [],
   menus: [],
+  orders: [],
   saving:[{saving: false}],
 };

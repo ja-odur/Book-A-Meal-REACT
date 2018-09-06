@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MenusList = ({menus}) => {
+const MenusList = ({menus, onClick}) => {
   console.log('menus in list', menus);
   return (
     <div>
@@ -21,7 +21,8 @@ const MenusList = ({menus}) => {
               <tr key={menuItem.menu_id}>
                 <td colSpan="2" className="text-center">{menuItem.name}</td>
                 <td className="text-center"> UGX {menuItem.price}</td>
-                <td className="text-center"><span className="btn btn-primary btn-sm">Order</span></td>
+                <td className="text-center">
+                  <span className="btn btn-primary btn-sm" onClick={onClick("orderMeal", menuItem.menu_id)}>Order</span></td>
               </tr>
             )}
             </tbody>
@@ -34,6 +35,7 @@ const MenusList = ({menus}) => {
 
 MenusList.propTypes = {
   menus: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default MenusList;

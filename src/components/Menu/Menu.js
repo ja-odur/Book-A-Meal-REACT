@@ -1,12 +1,13 @@
 import React from 'react';
-import Menus from './MenusList';
+import MenuLists from './MenusList';
 import PropTypes from 'prop-types';
 
-const Menu = ({showMenu, menus}) => {
+const Menu = ({showMenu, menus, onClick}) => {
   return (
     <div id="menu" className={showMenu ? "" : "hidden"}>
-      <Menus
+      <MenuLists
         menus={menus}
+        onClick={onClick}
       />
     </div>
   );
@@ -15,6 +16,7 @@ const Menu = ({showMenu, menus}) => {
 Menu.propTypes = {
   showMenu: PropTypes.bool.isRequired,
   menus: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Menu;

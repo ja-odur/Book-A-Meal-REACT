@@ -1,5 +1,5 @@
 import * as actionTypes from './ActionTypes';
-import {addMealApi, getMeals, pointMealAPI} from '../api/api';
+import {addMealApi, getMeals, pointMealAPI, trendingMealsAPI} from '../api/api';
 import {clearErrors, addMealError, loadMealError} from './errorsActions';
 import {viewOrderHistory} from './orderActions';
 import {saving} from './savingActions';
@@ -18,6 +18,14 @@ function pointMealSuccess(data) {
 
 function pointMealFailure(data) {
   return {type: actionTypes.POINT_MEAL_FAILURE, data};
+}
+
+function viewTrendingMealsSuccess(data) {
+  return {type: actionTypes.VIEW_TRENDING_SUCCESS, data};
+}
+
+function viewTrendingMealsFailure(data) {
+  return {type: actionTypes.VIEW_TRENDING_FAILURE, data};
 }
 
 export function addMeal(data){
@@ -58,9 +66,23 @@ export function pointMeal(meal_id) {
       .then(response => {
         dispatch(pointMealSuccess(response.data.message));
         dispatch(viewOrderHistory());
+        dispatch(viewTrendingMeals());
       })
       .catch(errors => {
+        dispatch(viewTrendingMeals());
         dispatch(pointMealFailure(errors.response.data.message));
+      });
+  };
+}
+
+export function viewTrendingMeals() {
+  return function (dispatch) {
+    return trendingMealsAPI()
+      .then(response => {
+        dispatch(viewTrendingMealsSuccess(response.data.message));
+      })
+      .catch(errors => {
+        dispatch(viewTrendingMealsFailure(errors.response.data.message));
       });
   };
 }

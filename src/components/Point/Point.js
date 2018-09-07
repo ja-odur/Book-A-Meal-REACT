@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import PointList from './PointList';
 
-const Point = () => {
+const Point = ({trendingMeals, onClick}) => {
   return (
     <div className="" id="Point">
-      <div className="point_meal">TRENDING</div>
+      <div className="pending text-center">TRENDING</div>
 
-      <table className="table table-striped table-light caterer-point">
+      <table className="table table-striped table-light caterer-pending">
         <thead>
         <tr>
           <td className="text-center">Meal</td>
@@ -16,39 +18,20 @@ const Point = () => {
 
         </thead>
 
-        <tbody>
-          <tr>
-            <td className="text-center">Beef with rice</td>
-            <td className="text-center"> Caterer 1</td>
-            <td className="text-center" >50</td>
-            <td className="text-center" ><span className="btn btn-primary btn-sm">Order</span></td>
-          </tr>
+        <PointList
+          trendingMeals={trendingMeals}
+          onClick={onClick}
+        />
 
-          <tr>
-            <td className="text-center">Beef with rice</td>
-            <td className="text-center"> Caterer 1</td>
-            <td className="text-center" >50</td>
-            <td className="text-center" ><span className="btn btn-primary btn-sm">Order</span></td>
-          </tr>
-
-          <tr>
-            <td className="text-center">Beef with rice</td>
-            <td className="text-center"> Caterer 1</td>
-            <td className="text-center" >50</td>
-            <td className="text-center" ><span className="btn btn-primary btn-sm">Order</span></td>
-          </tr>
-
-          <tr>
-            <td className="text-center">Beef with rice</td>
-            <td className="text-center"> Caterer 1</td>
-            <td className="text-center" >50</td>
-            <td className="text-center" ><span className="btn btn-primary btn-sm">Order</span></td>
-          </tr>
-        </tbody>
       </table>
 
     </div>
   );
+};
+
+Point.propTypes = {
+  trendingMeals: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Point;

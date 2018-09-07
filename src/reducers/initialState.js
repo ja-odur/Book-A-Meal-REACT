@@ -3,6 +3,7 @@ export default {
   register: [],
   errors: [],
   meals: [],
+  trendingMeals: [],
   menu: [],
   menus: [],
   orders: [],

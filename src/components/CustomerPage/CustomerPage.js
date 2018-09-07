@@ -32,6 +32,7 @@ class CustomerPage extends React.Component {
     this.props.menuActions.getAllMenus();
     this.props.orderActions.getOrdersCustomer();
     this.props.orderActions.viewOrderHistory();
+    this.props.mealActions.viewTrendingMeals();
   }
 
   onClick = (type, id=false) => (event) => {
@@ -96,6 +97,7 @@ class CustomerPage extends React.Component {
             onClick={this.onClick}
             orders={this.props.orders}
             orderHistory={this.props.orderHistory}
+            trendingMeals={this.props.trendingMeals}
           />
         </div>
         <Footer/>
@@ -106,6 +108,8 @@ class CustomerPage extends React.Component {
 
 CustomerPage.propTypes = {
   menus: PropTypes.array.isRequired,
+  meals: PropTypes.array.isRequired,
+  trendingMeals: PropTypes.array.isRequired,
   savingActions: PropTypes.object.isRequired,
   menuActions: PropTypes.object.isRequired,
   orderActions: PropTypes.object.isRequired,
@@ -120,6 +124,7 @@ function mapStateToProps(state, ownProps) {
     orders: state.orders,
     orderHistory: state.orderHistory,
     meals: state.meals,
+    trendingMeals: state.trendingMeals,
   };
 }
 

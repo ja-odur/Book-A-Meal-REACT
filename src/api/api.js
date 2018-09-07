@@ -16,6 +16,7 @@ const orderHistoryUrl = `${url}/api/v1/orders/history`;
 const pointMealUrl = `${url}/api/v1/meals/point/`;
 const getOrdersCatererUrl = `${url}/api/v1/orders`;
 const clearOrderUrl = `${url}/api/v1/orders/clear/`;
+const trendingUrl = `${url}/api/v1/meals/trending`;
 
 export function loginApi(loginData) {
   return axios.post(loginUrl, loginData);
@@ -75,6 +76,10 @@ export function getOrdersCatererAPI() {
 
 export function clearOrderAPI(order_id){
   return axios.patch(`${clearOrderUrl}${order_id}`);
+}
+
+export function trendingMealsAPI() {
+  return axios.get(trendingUrl);
 }
 
 export function setAuthorizationToken(token){

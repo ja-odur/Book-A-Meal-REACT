@@ -5,13 +5,16 @@ import OrderHistory from '../Order/OrderHistory';
 import Point from '../Point/Point';
 import PropTypes from 'prop-types';
 
-const Content = ({tabs, menus, orders, orderHistory, onClick}) => {
+const Content = ({tabs, menus, orders, trendingMeals, orderHistory, onClick}) => {
 
     return(
       <div id="content">
 
         <div className="side-content">
-          <Point/>
+          <Point
+            trendingMeals={trendingMeals}
+            onClick={onClick}
+          />
         </div>
 
         <div className="middle-content">
@@ -39,6 +42,7 @@ const Content = ({tabs, menus, orders, orderHistory, onClick}) => {
 Content.propTypes = {
   tabs: PropTypes.object.isRequired,
   menus: PropTypes.array.isRequired,
+  trendingMeals: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   orders: PropTypes.array.isRequired,
   orderHistory: PropTypes.array.isRequired,

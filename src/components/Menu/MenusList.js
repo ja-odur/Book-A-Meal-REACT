@@ -28,6 +28,9 @@ const MenusList = ({menus, onClick}) => {
           </table>
         )
       }
+      {menus && menus.length <= 0 &&
+      <div className="caterer text-center">No Menu Set For Today.</div>
+      }
     </div>
   );
 };

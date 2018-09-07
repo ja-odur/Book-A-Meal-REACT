@@ -69,10 +69,12 @@ export function removeMealFromMenu(data){
       .then(response => {
         dispatch(removeMealFromMenuSuccess(response.data.message));
         dispatch(loadMenu());
-
+        return true;
       })
       .catch(errors => {
+        dispatch(loadMenu());
         dispatch(removeMealFromMenuFailure(errors.response.data.message));
+        return false;
       });
   };
 }

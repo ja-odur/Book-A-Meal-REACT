@@ -172,6 +172,14 @@ body, html {
   /*border: 1px solid black;*/
   padding: 5px;
 }
+.pending {
+  font-size: 1.15em;
+  margin: 0 2.5%;
+  padding:3px 0;
+  background-color: #495dff;
+  border-radius: 5px 5px 0 0;
+  color: white;
+}
 
 .caterer {
   font-size: 1.15em;
@@ -202,6 +210,10 @@ body, html {
   width: 80%;
   margin: 0 auto 15px auto;
 }
+.caterer-pending {
+  width: 95%;
+  margin: 0 auto 15px auto;
+}
 
 .caterer-point {
   width: 80%;
@@ -209,7 +221,7 @@ body, html {
 }
 
 .caterer_menu p {
-  margin: 0 25%;
+  margin: 0 10%;
   padding: 2px 0;
   color: #4b4b4b;
   font-size: 1.05em;
@@ -238,7 +250,7 @@ body, html {
   width: 75%;
   background-color: #bfbfbf;
   /*background-color: rgba(0, 0, 255, 0.6);*/
-  /*color:white;*/
+  color:white;
 }
 
 .current_order, .order_history, .point_meal {
@@ -263,7 +275,7 @@ body, html {
   border-collapse: collapse;
   border-bottom: 1px solid white;
   padding: 3px 10px;
-  width:80%;
+  width:90%;
   margin: 0 auto 0 auto;
   text-align: center;
 }

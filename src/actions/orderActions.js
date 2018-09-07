@@ -1,5 +1,6 @@
 import * as actionTypes from  './ActionTypes';
-import {orderMealAPI, getOrdersCustomerAPI, removeOrderAPI, orderHistoryAPI} from '../api/api';
+import {orderMealAPI, getOrdersCustomerAPI, removeOrderAPI,
+  orderHistoryAPI, getOrdersCatererAPI, clearOrderAPI} from '../api/api';
 
 function orderMealSuccess(data) {
   return {type: actionTypes.ORDER_MEAL_SUCCESS, data};
@@ -31,6 +32,22 @@ function viewOrderHistorySuccess(data) {
 
 function viewOrderHistoryFailure(data) {
   return {type: actionTypes.ORDER_HISTORY_FAILURE, data};
+}
+
+function getOrdersCatererSuccess(data) {
+  return {type: actionTypes.GET_ORDERS_CATERER_SUCCESS, data};
+}
+
+function getOrdersCatererFailure(data) {
+  return {type: actionTypes.GET_ORDERS_CATERER_FAILURE, data};
+}
+
+function clearOrderSuccess(data) {
+  return {type: actionTypes.CLEAR_ORDER_SUCCESS, data};
+}
+
+function clearOrderFailure(data){
+  return {type: actionTypes.CLEAR_ORDER_FAILURE, data};
 }
 
 export function orderMeal(meal_id) {
@@ -98,6 +115,41 @@ export function viewOrderHistory() {
       })
       .catch(errors => {
         dispatch(viewOrderHistoryFailure(errors.response.data.message));
+      });
+  };
+}
+
+export function getOrdersCaterer() {
+  return function (dispatch) {
+    return getOrdersCatererAPI()
+      .then(response => {
+        var orders;
+
+        if(response.data.message === "Oops, orders not found."){
+          orders=[];
+        }
+        else {
+          orders = response.data.message.content;
+        }
+
+        dispatch(getOrdersCatererSuccess(orders));
+      })
+      .catch(errors => {
+        dispatch(getOrdersCatererFailure(errors.response.data.message));
+      });
+  };
+}
+
+export function clearOrder(order_id) {
+  return function (dispatch) {
+    return clearOrderAPI(order_id)
+      .then(response => {
+        dispatch(clearOrderSuccess(response.data.message));
+        dispatch(getOrdersCaterer());
+      })
+      .catch(errors => {
+        dispatch(clearOrderFailure(errors.response.data.message));
+        dispatch(getOrdersCaterer());
       });
   };
 }

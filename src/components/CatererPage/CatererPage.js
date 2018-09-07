@@ -8,6 +8,7 @@ import ContentCaterer from '../commons/ContentCaterer';
 import * as savingActions from '../../actions/savingActions';
 import * as mealActions from '../../actions/mealActions';
 import * as menuActions from '../../actions/menuActions';
+import * as orderActions from '../../actions/orderActions';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import toastr from "toastr";
@@ -37,6 +38,7 @@ class CatererPage extends React.Component {
 
   componentWillMount(){
     this.props.menuActions.loadMenu();
+    this.props.orderActions.getOrdersCaterer();
   }
 
   onClick = (type, meal_id=false) => (event) => {
@@ -44,12 +46,23 @@ class CatererPage extends React.Component {
     if(type === 'addMeal'){
       this.props.mealActions.loadMeals();
     }
+    else if (type === 'clearOrder'){
+          console.log('order id', meal_id);
+          this.props.orderActions.clearOrder(meal_id);
+        }
     else if (type === "addMealsToMenu") {
       this.props.menuActions.addMealsToMenu({meal_ids: this.state.meal_ids});
     }
     else if (type === 'removeMealFromMenu'){
-      this.props.menuActions.removeMealFromMenu({meal_id: meal_id});
-      console.log('value in remove', meal_id);
+      this.props.menuActions.removeMealFromMenu({meal_id: meal_id})
+        .then(response =>{
+          if(response){
+            toastr.success('Meal removed from menu');
+          }
+          else {
+            toastr.error('Meal can not be removed')
+          }
+        });
     }
     else {
       this.setState({
@@ -89,13 +102,10 @@ class CatererPage extends React.Component {
       if(event.target.checked){
         const mealIds = _.concat(this.state.meal_ids, parseInt(value, 10));
         this .setState({meal_ids: mealIds});
-        console.log('mealIds added', mealIds);
       }
       else{
         const mealIds = _.pull(this.state.meal_ids, parseInt(value, 10));
         this .setState({meal_ids: mealIds});
-
-        console.log('mealIds removed', mealIds);
 
       }
     }
@@ -145,6 +155,7 @@ class CatererPage extends React.Component {
             meals={this.props.meals}
             menu={this.props.menu}
             meal_ids={this.state.meal_ids}
+            orders={this.props.orders}
           />
         </div>
         <Footer/>
@@ -163,7 +174,8 @@ CatererPage.propTypes = {
   saving: PropTypes.array.isRequired,
   meals: PropTypes.array.isRequired,
   menu: PropTypes.array.isRequired,
-  errors: PropTypes.array
+  errors: PropTypes.array,
+  orders: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
@@ -172,6 +184,7 @@ function mapStateToProps(state, ownProps) {
     errors: state.errors,
     meals: state.meals,
     menu: state.menu,
+    orders: state.orders,
   };
 }
 
@@ -180,6 +193,7 @@ function mapDispatchToProps(dispatch) {
     savingActions: bindActionCreators(savingActions, dispatch),
     mealActions: bindActionCreators(mealActions, dispatch),
     menuActions: bindActionCreators(menuActions, dispatch),
+    orderActions: bindActionCreators(orderActions, dispatch),
   };
 }
 

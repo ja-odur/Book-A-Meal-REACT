@@ -19,6 +19,11 @@ const MealItems = ({meals, onChange}) => {
         </td>
       </tr>
     )}
+    {meals && meals.length <= 0 &&
+      <tr>
+        <td colSpan="4"><span className="btn btn-outline-primary btn-block">No Meals Created</span></td>
+      </tr>
+    }
 
     </tbody>
   );

@@ -13,8 +13,18 @@ const MenuList = ({menu, onClick}) => {
       </tr>
     )}
 
+    {menu && menu.length <= 0 &&
     <tr>
-      <td colSpan="4"><span className="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCart" onClick={onClick("addMeal")}>Add Meal</span></td>
+      <td colSpan="4"><span className="btn btn-outline-primary btn-block">No Meals Added To Menu.</span></td>
+    </tr>
+    }
+
+    <tr>
+      <td colSpan="4">
+        <span className="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCart" onClick={onClick("addMeal")}>
+          Add Meals
+        </span>
+      </td>
     </tr>
 
     </tbody>

@@ -14,7 +14,7 @@ function setup(showBrandName=false, error="") {
   return shallow(<TextInput {...props} />);
 }
 
-describe('<TextInpit />', () => {
+describe('<TextInput />', () => {
   describe('render()', () => {
     test('renders the component', () => {
       const wrapper = setup(true);

@@ -75,7 +75,7 @@ AddMeal.propTypes = {
   mealData: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  saving: PropTypes.array,
+  saving: PropTypes.object,
   mealAddStatus: PropTypes.string,
   errors: PropTypes.array
 };

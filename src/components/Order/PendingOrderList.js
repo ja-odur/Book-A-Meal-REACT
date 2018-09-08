@@ -10,7 +10,6 @@ const PendingOrderList = ({orders, onClick}) => {
     return price;
   }
 
-  console.log('orders', orders);
   return (
     <tbody>
     {orders.map(order =>

@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/jaodur/Book-A-Meal-REACT.svg?branch=develop)](https://travis-ci.org/jaodur/Book-A-Meal-REACT)
+
+[![Coverage Status](https://coveralls.io/repos/github/jaodur/Book-A-Meal-REACT/badge.svg?branch=develop)](https://coveralls.io/github/jaodur/Book-A-Meal-REACT?branch=develop)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

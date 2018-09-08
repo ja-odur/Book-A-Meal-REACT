@@ -1,9 +1,18 @@
+import Adaptor from 'enzyme-adapter-react-16';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Enzyme, { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import configureStore from 'redux-mock-store';
+
+Enzyme.configure({adapter: new Adaptor()});
+
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('<App />', () => {
+  describe('render()', () => {
+    test('renders the component', () => {
+      const wrapper = shallow(<App />);
+
+    });
+  });
 });

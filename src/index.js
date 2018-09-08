@@ -1,4 +1,3 @@
-
 import './index.css';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
@@ -8,10 +7,9 @@ import {BrowserRouter, Route} from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import CustomerPage from './components/CustomerPage/CustomerPage';
 import CatererPage from './components/CatererPage/CatererPage';
-import App from "./App";
 import React from "react";
 
-import {setAuthorizationToken} from './api/api'
+import {setAuthorizationToken} from './api/api';
 
 const store = configureStore(initialState);
 
@@ -27,7 +25,7 @@ export default  render(
         <Route exact path="/" component={LandingPage}/>
         <Route exact path="/customer" component={CustomerPage}/>
         <Route exact path="/caterer" component={CatererPage}/>
-        <Route exact path="/app" component={App}/>
+        {/*<Route exact path="/app" component={App}/>*/}
       </div>
     </BrowserRouter>
   </Provider>,

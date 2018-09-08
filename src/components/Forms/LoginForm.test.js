@@ -32,8 +32,8 @@ describe('<LoginForm />', () => {
 
     test('It shows login errors', () => {
       const wrapper = setup(true, [{loginError:'invalid username or password'}]);
-      expect(wrapper.find('.error').html())
-        .toBe('<div class=" white error form-control">invalid username or password or Category</div>');
+      expect(wrapper.find('.error').text())
+        .toBe('invalid username or password or Category');
     });
   });
 });

@@ -119,7 +119,7 @@ SignUpForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   registering: PropTypes.object,
-  errors: PropTypes.object,
+  errors: PropTypes.array,
   formErrors: PropTypes.object,
   showBrandName: PropTypes.bool,
 };

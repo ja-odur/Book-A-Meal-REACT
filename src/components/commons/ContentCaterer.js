@@ -58,6 +58,8 @@ ContentCaterer.propTypes = {
   onSave: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   errors: PropTypes.array,
+  mealAddStatus: PropTypes.string,
+
 };
 
 export default ContentCaterer;

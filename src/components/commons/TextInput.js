@@ -40,7 +40,8 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   error: PropTypes.string,
-  showBrandName: PropTypes.bool
+  showBrandName: PropTypes.bool,
+  type: PropTypes.string,
 };
 
 export default TextInput;

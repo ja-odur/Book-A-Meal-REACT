@@ -13,7 +13,7 @@ class NavigationBar extends React.Component {
           </form>
         </nav>
       </div>
-    )
+    );
   }
 }
 

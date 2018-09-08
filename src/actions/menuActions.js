@@ -43,7 +43,7 @@ export function loadMenu() {
       )
       .catch(errors => {
         dispatch(loadMenuFailure(errors.response.data.message));
-
+        return false;
       });
   };
 }
@@ -87,16 +87,14 @@ export function getAllMenus() {
         var newMenu = [];
 
         _.forEach(menu, function(value, key) {
-          console.log('key', key, 'value', value);
           var menuItem = _.concat([], [[key, value]]);
           newMenu = _.concat(newMenu, menuItem);
         });
-        console.log('new menu in actions', newMenu);
-
         dispatch(getAllMenusSuccess(newMenu));
       })
       .catch(errors => {
         dispatch(getAllMenusFailure(errors.response.data.message));
+        return false;
       });
   };
 }

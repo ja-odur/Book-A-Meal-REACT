@@ -26,14 +26,22 @@ class CustomerPage extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+    this.testLogin = this.testLogin.bind(this);
   }
 
   componentWillMount(){
+    // this.testLogin();
     this.props.menuActions.getAllMenus();
     this.props.orderActions.getOrdersCustomer();
     this.props.orderActions.viewOrderHistory();
     this.props.mealActions.viewTrendingMeals();
   }
+
+  testLogin = () => {
+    if(!this.props.login[0].isLoggedIn){
+      this.context.router.history.push('/');
+    }
+  };
 
   onClick = (type, id=false) => (event) => {
     event.preventDefault();
@@ -106,7 +114,12 @@ class CustomerPage extends React.Component {
   }
 }
 
+CustomerPage.contextTypes = {
+  router: PropTypes.object
+};
+
 CustomerPage.propTypes = {
+  login: PropTypes.array.isRequired,
   menus: PropTypes.array.isRequired,
   meals: PropTypes.array.isRequired,
   trendingMeals: PropTypes.array.isRequired,
@@ -120,6 +133,7 @@ CustomerPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
+    login: state.login,
     menus: state.menus,
     orders: state.orders,
     orderHistory: state.orderHistory,

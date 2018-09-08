@@ -37,9 +37,16 @@ class CatererPage extends React.Component {
   }
 
   componentWillMount(){
+    // this.testLogin();
     this.props.menuActions.loadMenu();
     this.props.orderActions.getOrdersCaterer();
   }
+
+  testLogin = () => {
+    if(!this.props.login[0].isLoggedIn){
+      this.context.router.history.push('/');
+    }
+  };
 
   onClick = (type, meal_id=false) => (event) => {
     event.preventDefault();
@@ -176,10 +183,12 @@ CatererPage.propTypes = {
   menu: PropTypes.array.isRequired,
   errors: PropTypes.array,
   orders: PropTypes.array.isRequired,
+  login: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
+    login: state.login,
     saving: state.saving,
     errors: state.errors,
     meals: state.meals,

@@ -1,5 +1,5 @@
 export default {
-  login: [],
+  login: [{user: false, isLoggedIn: false}],
   register: [],
   errors: [],
   meals: [],

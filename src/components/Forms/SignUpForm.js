@@ -100,6 +100,7 @@ const SignUpForm = ({signUp, onSave, onChange, registering, errors, formErrors, 
           />
 
           <input
+            id="register-submit"
             showBrandName={true}
             type="submit"
             disabled={registering.saving}

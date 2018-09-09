@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import toastr from 'toastr';
 
-class CustomerPage extends React.Component {
+export class CustomerPage extends React.Component {
   constructor(props, context){
     super(props, context);
 
@@ -26,7 +26,7 @@ class CustomerPage extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
-    this.testLogin = this.testLogin.bind(this);
+    // this.testLogin = this.testLogin.bind(this);
   }
 
   componentWillMount(){
@@ -37,11 +37,11 @@ class CustomerPage extends React.Component {
     this.props.mealActions.viewTrendingMeals();
   }
 
-  testLogin = () => {
-    if(!this.props.login[0].isLoggedIn){
-      this.context.router.history.push('/');
-    }
-  };
+  // testLogin = () => {
+  //   if(!this.props.login[0].isLoggedIn){
+  //     this.context.router.history.push('/');
+  //   }
+  // };
 
   onClick = (type, id=false) => (event) => {
     event.preventDefault();
@@ -58,7 +58,6 @@ class CustomerPage extends React.Component {
         });
     }
     else if (type === "PointMeal"){
-      console.log('point id', id);
       this.props.mealActions.pointMeal(id);
     }
     else if (type === 'DeleteOrder'){
@@ -131,7 +130,7 @@ CustomerPage.propTypes = {
   mealActions: PropTypes.object.isRequired,
 };
 
-function mapStateToProps(state, ownProps) {
+export function mapStateToProps(state, ownProps) {
   return {
     login: state.login,
     menus: state.menus,
@@ -142,7 +141,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     savingActions: bindActionCreators(savingActions, dispatch),
     menuActions: bindActionCreators(menuActions, dispatch),

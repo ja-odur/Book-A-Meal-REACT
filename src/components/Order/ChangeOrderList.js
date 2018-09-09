@@ -19,7 +19,7 @@ const ChangeOrderList = ({orders, onClick}) => {
         <td className="text-center">UGX {sumTotal(order.price)}</td>
         <td className="text-center">{order.caterer}</td>
         <td className="text-center" colSpan="2">
-          <span className="btn btn-danger btn-sm" onClick={onClick('DeleteOrder', order.order_id)}>Remove</span>
+          <span className="btn btn-danger btn-sm deleteOrder" onClick={onClick('DeleteOrder', order.order_id)}>Remove</span>
         </td>
       </tr>
     )}

@@ -2,35 +2,35 @@ import * as actionTypes from  './ActionTypes';
 import {getMenuPerCaterer, addMealsToMenuApi, removeMealFromMenuApi, getAllMenusAPi} from '../api/api';
 import _ from 'lodash';
 
-function loadMenuSuccess(data){
+export function loadMenuSuccess(data){
   return {type: actionTypes.LOAD_MENU_SUCCESS, data};
 }
 
-function loadMenuFailure(data){
+export function loadMenuFailure(data){
   return {type: actionTypes.LOAD_MENU_FAILURE, data};
 }
 
-function addMealsToMenuSuccess(data){
+export function addMealsToMenuSuccess(data){
   return { type: actionTypes.ADD_MEALS_TO_MENU_SUCCESS, data};
 }
 
-function addMealsToMenuFailure(data){
+export function addMealsToMenuFailure(data){
   return { type: actionTypes.ADD_MEALS_TO_MENU_FAILURE, data};
 }
 
-function removeMealFromMenuSuccess(data) {
+export function removeMealFromMenuSuccess(data) {
   return {type: actionTypes.REMOVE_MEAL_FROM_MENU_SUCCESS, data};
 }
 
-function removeMealFromMenuFailure(data) {
+export function removeMealFromMenuFailure(data) {
   return {type: actionTypes.REMOVE_MEAL_FROM_MENU_FAILURE, data};
 }
 
-function getAllMenusSuccess(data){
+export function getAllMenusSuccess(data){
   return {type: actionTypes.GET_ALL_MENUS_SUCCESS, data};
 }
 
-function getAllMenusFailure(data) {
+export function getAllMenusFailure(data) {
   return {type: actionTypes.GET_ALL_MENUS_FAILURE, data};
 }
 

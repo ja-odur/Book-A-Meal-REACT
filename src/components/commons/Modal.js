@@ -30,7 +30,7 @@ const Modal = ({meals, meal_ids, onChange, onClick}) => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-              <button className="btn btn-primary" data-dismiss="modal" onClick={onClick("addMealsToMenu")}>Add To Menu</button>
+              <button className="btn btn-primary addMealToMenu" data-dismiss="modal" onClick={onClick("addMealsToMenu")}>Add To Menu</button>
             </div>
           </div>
         </div>

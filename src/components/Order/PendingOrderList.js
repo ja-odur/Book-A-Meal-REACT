@@ -19,7 +19,7 @@ const PendingOrderList = ({orders, onClick}) => {
       <td className="text-center"> UGX {sumTotal(order.price)}</td>
       <td className="text-center">{order.customer}</td>
       <td className="text-center">
-        <span className="btn btn-primary btn-sm" onClick={onClick("clearOrder", order.order_id)}>Clear Order</span>
+        <span className="btn btn-primary btn-sm clearOrder" onClick={onClick("clearOrder", order.order_id)}>Clear Order</span>
       </td>
     </tr>
     )}

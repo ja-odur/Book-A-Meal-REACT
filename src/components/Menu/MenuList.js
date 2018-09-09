@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MenuList = ({menu, onClick}) => {
-  console.log('menu in menulist', menu);
   return (
     <tbody>
     { menu.map(menuItem =>
       <tr>
         <td colSpan="2" className="text-center" key={`menu-${menuItem.menu_id}`}>{menuItem.name}</td>
         <td className="text-center"> UGX {menuItem.price}</td>
-        <td className="text-center"><span className="btn btn-danger btn-sm" value={menuItem.meal_id} onClick={onClick('removeMealFromMenu', menuItem.meal_id)}>Remove</span></td>
+        <td className="text-center">
+          <span className="btn btn-danger btn-sm removeMeal" value={menuItem.meal_id} onClick={onClick('removeMealFromMenu', menuItem.meal_id)}>
+            Remove
+          </span>
+        </td>
       </tr>
     )}
 
@@ -21,7 +24,7 @@ const MenuList = ({menu, onClick}) => {
 
     <tr>
       <td colSpan="4">
-        <span className="btn btn-primary btn-block" data-toggle="modal" data-target="#modalCart" onClick={onClick("addMeal")}>
+        <span className="btn btn-primary btn-block addMealMenu" data-toggle="modal" data-target="#modalCart" onClick={onClick("addMeal")}>
           Add Meals
         </span>
       </td>

@@ -57,7 +57,7 @@ const AddMeal = ({showMeal, mealData, onChange, onSave, saving, mealAddStatus, e
               type="submit"
               disabled={saving.saving}
               value={saving.saving ? 'Adding Meal...' : 'Add Meal'}
-              className="btn btn-primary full mt-3"
+              className="btn btn-primary full mt-3 addMeal-submit"
               onClick={onSave('addMeal')}
             />
           </td>

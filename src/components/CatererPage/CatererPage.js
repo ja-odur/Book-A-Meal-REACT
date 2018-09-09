@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import toastr from "toastr";
 
-class CatererPage extends React.Component {
+export class CatererPage extends React.Component {
   constructor(props, context){
     super(props, context);
 
@@ -42,11 +42,11 @@ class CatererPage extends React.Component {
     this.props.orderActions.getOrdersCaterer();
   }
 
-  testLogin = () => {
-    if(!this.props.login[0].isLoggedIn){
-      this.context.router.history.push('/');
-    }
-  };
+  // testLogin = () => {
+  //   if(!this.props.login[0].isLoggedIn){
+  //     this.context.router.history.push('/');
+  //   }
+  // };
 
   onClick = (type, meal_id=false) => (event) => {
     event.preventDefault();
@@ -54,7 +54,6 @@ class CatererPage extends React.Component {
       this.props.mealActions.loadMeals();
     }
     else if (type === 'clearOrder'){
-          console.log('order id', meal_id);
           this.props.orderActions.clearOrder(meal_id);
         }
     else if (type === "addMealsToMenu") {
@@ -122,7 +121,6 @@ class CatererPage extends React.Component {
     event.preventDefault();
     this.props.savingActions.saving({saving: true});
     if(type === 'addMeal'){
-      console.log('saving meal');
       this.props.mealActions.addMeal(this.state.mealData)
         .then(response => {
           if(response){
@@ -186,7 +184,7 @@ CatererPage.propTypes = {
   login: PropTypes.array.isRequired,
 };
 
-function mapStateToProps(state, ownProps) {
+export function mapStateToProps(state, ownProps) {
   return {
     login: state.login,
     saving: state.saving,
@@ -197,7 +195,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     savingActions: bindActionCreators(savingActions, dispatch),
     mealActions: bindActionCreators(mealActions, dispatch),

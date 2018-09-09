@@ -11,7 +11,7 @@ import * as savingActions from '../../actions/savingActions';
 import PropTypes from 'prop-types';
 import toastr from 'toastr';
 
-class LandingPage extends React.Component {
+export class LandingPage extends React.Component {
   constructor(props, context){
     super(props, context);
 
@@ -245,9 +245,9 @@ class LandingPage extends React.Component {
                   WELCOME TO EasyMeal
 
                 </div>
-                <div className="btn btn-primary btn-lg" onClick={this.onClick('signUp')}>Sign Up</div>
+                <div id="signup" className="btn btn-primary btn-lg" onClick={this.onClick('signUp')}>Sign Up</div>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <div className="btn btn-primary btn-lg" onClick={this.onClick('login')}>Login</div>
+                <div id="login" className="btn btn-primary btn-lg" onClick={this.onClick('login')}>Login</div>
             </div>
 
           </div>
@@ -268,7 +268,7 @@ LandingPage.contextTypes = {
   router: PropTypes.object
 };
 
-function mapStateToProps(state, ownProps) {
+export function mapStateToProps(state, ownProps) {
 
   return {
     errors: state.errors,
@@ -277,7 +277,7 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     loginActions: bindActionCreators(loginActions, dispatch),
     signUpActions: bindActionCreators(signupActions, dispatch),

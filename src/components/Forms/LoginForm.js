@@ -44,6 +44,7 @@ const LoginForm = ({login, onSave, onChange, saving, errors}) => {
         />
 
         <input
+          id="submit-login"
           type="submit"
           disabled={saving.saving}
           value={saving.saving ? 'Logging in...' : 'Login'}

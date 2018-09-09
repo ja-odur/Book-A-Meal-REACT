@@ -13,7 +13,7 @@ const OrderHistoryList = ({orderHistory, onClick}) => {
         <td className="text-center">{order.caterer}</td>
         <td className="text-left">Points {order.points}</td>
         <td className="text-center" >
-          <span className="btn btn-primary btn-sm" onClick={onClick("PointMeal", order.meal_id)}>Point</span>
+          <span className="btn btn-primary btn-sm pointMeal" onClick={onClick("PointMeal", order.meal_id)}>Point</span>
         </td>
       </tr>
       )}

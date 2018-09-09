@@ -2,51 +2,51 @@ import * as actionTypes from  './ActionTypes';
 import {orderMealAPI, getOrdersCustomerAPI, removeOrderAPI,
   orderHistoryAPI, getOrdersCatererAPI, clearOrderAPI} from '../api/api';
 
-function orderMealSuccess(data) {
+export function orderMealSuccess(data) {
   return {type: actionTypes.ORDER_MEAL_SUCCESS, data};
 }
 
-function orderMealFailure(data) {
+export function orderMealFailure(data) {
   return {type: actionTypes.ORDER_MEAL_FAILURE, data};
 }
 
-function getOrdersCustomerSuccess(data) {
+export function getOrdersCustomerSuccess(data) {
   return {type: actionTypes.GET_ORDERS_CUSTOMER_SUCCESS, data};
 }
 
-function getOrdersCustomerFailure(data) {
+export function getOrdersCustomerFailure(data) {
   return {type: actionTypes.GET_ORDERS_CUSTOMER_FAILURE, data};
 }
 
-function removeOrderSuccess(data) {
+export function removeOrderSuccess(data) {
   return {type: actionTypes.REMOVE_ORDER_SUCCESS, data};
 }
 
-function removeOrderFailure(data) {
+export function removeOrderFailure(data) {
   return {type: actionTypes.REMOVE_ORDER_FAILURE, data};
 }
 
-function viewOrderHistorySuccess(data) {
+export function viewOrderHistorySuccess(data) {
   return {type: actionTypes.ORDER_HISTORY_SUCCESS, data};
 }
 
-function viewOrderHistoryFailure(data) {
+export function viewOrderHistoryFailure(data) {
   return {type: actionTypes.ORDER_HISTORY_FAILURE, data};
 }
 
-function getOrdersCatererSuccess(data) {
+export function getOrdersCatererSuccess(data) {
   return {type: actionTypes.GET_ORDERS_CATERER_SUCCESS, data};
 }
 
-function getOrdersCatererFailure(data) {
+export function getOrdersCatererFailure(data) {
   return {type: actionTypes.GET_ORDERS_CATERER_FAILURE, data};
 }
 
-function clearOrderSuccess(data) {
+export function clearOrderSuccess(data) {
   return {type: actionTypes.CLEAR_ORDER_SUCCESS, data};
 }
 
-function clearOrderFailure(data){
+export function clearOrderFailure(data){
   return {type: actionTypes.CLEAR_ORDER_FAILURE, data};
 }
 

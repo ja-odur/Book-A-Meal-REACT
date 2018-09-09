@@ -21,7 +21,7 @@ const MenusList = ({menus, onClick}) => {
                 <td colSpan="2" className="text-center">{menuItem.name}</td>
                 <td className="text-center"> UGX {menuItem.price}</td>
                 <td className="text-center">
-                  <span className="btn btn-primary btn-sm" onClick={onClick("orderMeal", menuItem.menu_id)}>Order</span></td>
+                  <span className="btn btn-primary btn-sm orderMeal" onClick={onClick("orderMeal", menuItem.menu_id)}>Order</span></td>
               </tr>
             )}
             </tbody>

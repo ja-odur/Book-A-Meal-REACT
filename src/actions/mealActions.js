@@ -4,27 +4,27 @@ import {clearErrors, addMealError, loadMealError} from './errorsActions';
 import {viewOrderHistory} from './orderActions';
 import {saving} from './savingActions';
 
-function addMealSuccess(data){
+export function addMealSuccess(data){
   return {type: actionTypes.ADD_MEAL_SUCCESS, data};
 }
 
-function loadMealsSuccess(data){
+export function loadMealsSuccess(data){
   return {type: actionTypes.LOAD_MEALS_SUCCESS, data};
 }
 
-function pointMealSuccess(data) {
+export function pointMealSuccess(data) {
   return {type:actionTypes.POINT_MEAL_SUCCESS, data};
 }
 
-function pointMealFailure(data) {
+export function pointMealFailure(data) {
   return {type: actionTypes.POINT_MEAL_FAILURE, data};
 }
 
-function viewTrendingMealsSuccess(data) {
+export function viewTrendingMealsSuccess(data) {
   return {type: actionTypes.VIEW_TRENDING_SUCCESS, data};
 }
 
-function viewTrendingMealsFailure(data) {
+export function viewTrendingMealsFailure(data) {
   return {type: actionTypes.VIEW_TRENDING_FAILURE, data};
 }
 

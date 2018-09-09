@@ -7,6 +7,6 @@ export default function loginReducer(state=initialState.register, action) {
       return [...state, Object.assign({}, action)];
 
     default:
-      return state
+      return state;
   }
 }

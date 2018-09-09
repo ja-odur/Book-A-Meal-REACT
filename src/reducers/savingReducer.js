@@ -7,6 +7,6 @@ export default function savingReducer(state=initialState.saving, action) {
       return [...state, Object.assign({}, action.data)];
 
     default:
-      return state
+      return state;
   }
 }

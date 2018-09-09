@@ -13,7 +13,7 @@ const MealItems = ({meals, onChange}) => {
         <td className="text-center">UGX {meal.price}</td>
         <td>
           <label className="switch text-center">
-            <input type="checkbox" value={meal.meal_id} onChange={onChange('addMealToMenu')} />
+            <input className="mealToMenu" type="checkbox" value={meal.meal_id} onChange={onChange('addMealToMenu')} />
             <span className="slider round"></span>
           </label>
         </td>

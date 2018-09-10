@@ -13,7 +13,7 @@ export function loadMealsSuccess(data){
 }
 
 export function pointMealSuccess(data) {
-  return {type:actionTypes.POINT_MEAL_SUCCESS, data};
+  return {type: actionTypes.POINT_MEAL_SUCCESS, data};
 }
 
 export function pointMealFailure(data) {
@@ -40,7 +40,6 @@ export function addMeal(data){
       })
       .catch(errors => {
         dispatch(addMealError({addMealError: errors.response.data.message}));
-        console.log('error meals', errors.response.data);
         return false;
       });
   };
@@ -50,11 +49,9 @@ export function loadMeals() {
   return function (dispatch) {
     return getMeals()
       .then(response => {
-        console.log('meals', response.data.message);
         dispatch(loadMealsSuccess(response.data.message));
       })
       .catch(errors => {
-        console.log('errors',errors);
         dispatch(loadMealError({loadMealErrors: errors.response.data.message}));
       });
   };

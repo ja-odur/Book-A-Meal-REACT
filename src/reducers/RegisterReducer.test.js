@@ -1,5 +1,4 @@
 import expect from 'expect';
-import * as actions from '../actions/registerActions';
 import registerReducers from './RegisterReducer';
 
 describe('order reducer', () => {

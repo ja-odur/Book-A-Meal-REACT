@@ -69,10 +69,10 @@ export class LandingPage extends React.Component {
       errors[field] = this.validate(field, event.target.value);
 
       if(field === "category" && value === "caterer"){
-        this .setState({showBrandName: true});
+        this.setState({showBrandName: true});
       }
       else if (field === "category" && value === "user"){
-        this .setState({showBrandName: false});
+        this.setState({showBrandName: false});
       }
 
 

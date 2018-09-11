@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class NavigationBar extends React.Component {
-  render(){
+const NavigationBar =({username}) => {
+  console.log('username', username);
     return (
       <div>
         <nav className="navbar navbar-dark bg-dark-nav">
           <a className="navbar-brand text-white text-lg-left">EasyMeal</a>
-          <span className="text-white">Logged in as USERNAME SETTINGS</span>
+          <span className="text-white">Logged in as {username}.</span>
           <form className="form-inline">
             <input className="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search"/>
               <button className="btn btn-outline-success text-white border-white on-hover-white my-2 my-sm-0" type="submit">Search</button>
@@ -14,7 +15,11 @@ class NavigationBar extends React.Component {
         </nav>
       </div>
     );
-  }
-}
+
+};
+
+NavigationBar.propTypes = {
+  username: PropTypes.string.isRequired,
+};
 
 export default NavigationBar;

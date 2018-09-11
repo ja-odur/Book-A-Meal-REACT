@@ -14,7 +14,7 @@ const state = {
 
 function setup(success=true) {
   const props = {
-    login: [],
+    login: [{user:'test', loggedIn: true}],
     menus: [['yigas', [{menu_id: 1, name: 'test', price: 5000}] ]],
     orders: [{meal: 'test', price: 5000, caterer: "yigas", order_id: 1}],
     orderHistory: [{meal: "test", price: 5000, caterer: "yigas", points: 50, meal_id: 30}],

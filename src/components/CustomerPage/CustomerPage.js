@@ -92,7 +92,7 @@ export class CustomerPage extends React.Component {
   render() {
     return (
       <div>
-        <NavigationBar/>
+        <NavigationBar username={this.props.login[0].user}/>
         <div className="wrapper background-image">
           <SideBar
             tabs={this.state.activeTab}

@@ -14,7 +14,7 @@ const state = {
 
 function setup(response=true) {
   const props = {
-    login: [],
+    login: [{user:'test', loggedIn: true}],
     saving: [],
     errors: [],
     meals: [{meal_id: 1, name: "test", price: 5000}],

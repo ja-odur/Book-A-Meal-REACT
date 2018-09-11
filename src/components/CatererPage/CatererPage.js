@@ -151,7 +151,7 @@ export class CatererPage extends React.Component {
   render() {
     return (
       <div>
-        <NavigationBar/>
+        <NavigationBar username={this.props.login[0].user}/>
         <div className="wrapper background-image">
           <SideBarCaterer
             tabs={this.state.activeTab}

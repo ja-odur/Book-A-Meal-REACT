@@ -83,6 +83,22 @@ describe('Async meal Actions', () => {
     });
   });
 
+  test('It loads meals failure', () => {
+    mock.onGet(getMealsUrl).reply(400,{message: []});
+
+    const expectedActions = [
+      {type: actionTypes.LOAD_MEALS_FAILURE, data:[]}
+    ];
+
+    const store = mockStore(initialState.meals, expectedActions);
+
+    store.dispatch(mealActions.loadMeals())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions[0].type).toBe(actionTypes.LOAD_MEALS_SUCCESS);
+      });
+  });
+
 
   test('It adds meal successfully', () => {
     mock.onPost(addMealUrl).reply(201, {message: 'meal added'});
@@ -105,11 +121,46 @@ describe('Async meal Actions', () => {
 
   });
 
+  test('It adds meal failure', () => {
+    mock.onPost(addMealUrl).reply(400, {message: 'meal added'});
+
+    const expectedActions = [
+      {type: actionTypes.ADD_MEAL_FAILURE, data: {mea: "test", price: 5000}},
+    ];
+
+    const store = mockStore(initialState.meals, expectedActions);
+
+    store.dispatch(mealActions.addMeal({mea: "test", price: 5000}))
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+
+  });
+
+
   test('It gets trending meals', () => {
     mock.onGet(trendingUrl).reply(200, {message: 'meal added'});
 
     const expectedActions = [
       {type: actionTypes.VIEW_TRENDING_SUCCESS, data: []},
+    ];
+
+    const store = mockStore(initialState.meals, expectedActions);
+
+    store.dispatch(mealActions.viewTrendingMeals())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+
+  });
+
+  test('It gets trending meals failure', () => {
+    mock.onGet(trendingUrl).reply(400, {message: 'meal added'});
+
+    const expectedActions = [
+      {type: actionTypes.VIEW_TRENDING_FAILURE, data: []},
     ];
 
     const store = mockStore(initialState.meals, expectedActions);

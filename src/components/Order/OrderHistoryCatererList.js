@@ -26,7 +26,7 @@ const OrderHistoryCatererList = ({orderHistory, onClick}) => {
     </td>
     }
     <tr>
-      <td colSpan="2" className="text-center">CLEARED</td>
+      <td colSpan="2" className="text-center cleared">CLEARED</td>
       <td className="text-center">
         <span className="btn btn-outline-primary btn-block">{counter}</span>
       </td>

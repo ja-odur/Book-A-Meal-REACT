@@ -132,11 +132,59 @@ describe('Async order Actions', () => {
       });
   });
 
+  test('It order meal failure', () => {
+    mock.onPost(orderMealUrl).reply(400, {message: 'string'});
+
+    const expectedActions = [
+      {type: actionTypes.ORDER_MEAL_FAILURE, data:[]},
+    ];
+
+    const store = mockStore(initialState.menu, expectedActions);
+
+    store.dispatch(orderActions.orderMeal(1))
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
   test('It gets orders successfully', () => {
     mock.onGet(getOrderPlacedUrl).reply(200, {message: []});
 
     const expectedActions = [
       {type: actionTypes.GET_ORDERS_CUSTOMER_SUCCESS, data:[]},
+    ];
+
+    const store = mockStore(initialState.menu, expectedActions);
+
+    store.dispatch(orderActions.getOrdersCustomer())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
+  test('It gets empty orders successfully', () => {
+    mock.onGet(getOrderPlacedUrl).reply(200, {message: "No orders placed"});
+
+    const expectedActions = [
+      {type: actionTypes.GET_ORDERS_CUSTOMER_SUCCESS, data:[]},
+    ];
+
+    const store = mockStore(initialState.menu, expectedActions);
+
+    store.dispatch(orderActions.getOrdersCustomer())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
+  test('It gets orders failure', () => {
+    mock.onGet(getOrderPlacedUrl).reply(400, {message: []});
+
+    const expectedActions = [
+      {type: actionTypes.GET_ORDERS_CUSTOMER_FAILURE, data:[]},
     ];
 
     const store = mockStore(initialState.menu, expectedActions);
@@ -165,6 +213,22 @@ describe('Async order Actions', () => {
       });
   });
 
+  test('It removes orders failure', () => {
+    mock.onDelete(`${removeOrderUrl}1`).reply(400, {message: []});
+
+    const expectedActions = [
+      {type: actionTypes.REMOVE_ORDER_FAILURE, data:[]},
+    ];
+
+    const store = mockStore(initialState.order, expectedActions);
+
+    store.dispatch(orderActions.removeOrder(1))
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
   test('It views order history successfully', () => {
     mock.onGet(orderHistoryUrl).reply(200, {message: []});
 
@@ -180,6 +244,40 @@ describe('Async order Actions', () => {
         expect(actions).toBe(expectedActions);
       });
   });
+
+  test('It views empty order history successfully', () => {
+    mock.onGet(orderHistoryUrl).reply(200, {message: 'No order history'});
+
+    const expectedActions = [
+      {type: actionTypes.ORDER_HISTORY_SUCCESS, data:[]},
+    ];
+
+    const store = mockStore(initialState.order, expectedActions);
+
+    store.dispatch(orderActions.viewOrderHistory())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
+
+  test('It views order history failure', () => {
+    mock.onGet(orderHistoryUrl).reply(400, {message: []});
+
+    const expectedActions = [
+      {type: actionTypes.ORDER_HISTORY_FAILURE, data:[]},
+    ];
+
+    const store = mockStore(initialState.order, expectedActions);
+
+    store.dispatch(orderActions.viewOrderHistory())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
 
   test('It gets orders caterer successfully', () => {
     mock.onGet(getOrdersCatererUrl).reply(200, {message: {content: []}});
@@ -197,11 +295,60 @@ describe('Async order Actions', () => {
       });
   });
 
+  test('It gets empty orders caterer successfully', () => {
+    mock.onGet(getOrdersCatererUrl).reply(200, {message: "Oops, orders not found."});
+
+    const expectedActions = [
+      {type: actionTypes.GET_ORDERS_CATERER_SUCCESS, data:[]},
+    ];
+
+    const store = mockStore(initialState.orders, expectedActions);
+
+    store.dispatch(orderActions.getOrdersCaterer())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
+  test('It gets orders caterer failure', () => {
+    mock.onGet(getOrdersCatererUrl).reply(400, {message: {content: []}});
+
+    const expectedActions = [
+      {type: actionTypes.GET_ORDERS_CATERER_FAILURE, data:[]},
+    ];
+
+    const store = mockStore(initialState.orders, expectedActions);
+
+    store.dispatch(orderActions.getOrdersCaterer())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
   test('It clears orders successfully', () => {
     mock.onPatch(`${clearOrderUrl}1`).reply(200, {message: 'string'});
 
     const expectedActions = [
       {type: actionTypes.CLEAR_ORDER_SUCCESS, data:[]},
+      {type: actionTypes.GET_ORDERS_CATERER_SUCCESS, data:[]},
+    ];
+
+    const store = mockStore(initialState.orders, expectedActions);
+
+    store.dispatch(orderActions.clearOrder(1))
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions).toBe(expectedActions);
+      });
+  });
+
+  test('It clears orders failure', () => {
+    mock.onPatch(`${clearOrderUrl}1`).reply(400, {message: 'string'});
+
+    const expectedActions = [
+      {type: actionTypes.CLEAR_ORDER_FAILURE, data:[]},
       {type: actionTypes.GET_ORDERS_CATERER_SUCCESS, data:[]},
     ];
 

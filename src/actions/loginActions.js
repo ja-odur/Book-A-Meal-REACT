@@ -21,7 +21,6 @@ export function login(data) {
         dispatch(clearErrors(data));
         setAuthorizationToken(res.data.token);
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('username', data['username']);
         return {loggedIn:true, category:data['category']};
       })
       .catch(errors =>{

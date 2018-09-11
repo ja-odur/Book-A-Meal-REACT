@@ -4,9 +4,10 @@ import AddMeal from '../Meal/AddMeal';
 import Modal from '../commons/Modal';
 import PendingOrders from '../Order/PendingOrders';
 import PropTypes from 'prop-types';
+import OrderHistoryCaterer from "../Order/OrderHistoryCaterer";
 
 const ContentCaterer = ({tabs, mealData, meals, onChange, onSave, saving, mealAddStatus, errors, onClick, menu,
-                          meal_ids, orders}) => {
+                          meal_ids, orders, orderHistory}) => {
   return(
     <div id="content">
 
@@ -33,6 +34,11 @@ const ContentCaterer = ({tabs, mealData, meals, onChange, onSave, saving, mealAd
           mealAddStatus={mealAddStatus}
           errors={errors}
         />
+        <OrderHistoryCaterer
+          showHistory={tabs.order_history}
+          orderHistory={orderHistory}
+          onClick={onClick}
+        />
         <Modal
           meals={meals}
           meal_ids={meal_ids}
@@ -57,6 +63,7 @@ ContentCaterer.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  orderHistory: PropTypes.array.isRequired,
   errors: PropTypes.array,
   mealAddStatus: PropTypes.string,
 

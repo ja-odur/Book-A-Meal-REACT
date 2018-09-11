@@ -14,10 +14,11 @@ const Footer = () => {
 
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
-              <h6 className="text-uppercase font-weight-bold text-white">Company name</h6>
+              <h6 className="text-uppercase font-weight-bold text-white">Easy Meal</h6>
               <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto hr-49"/>
-                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit.</p>
+                <p>Is a web based app that enables  several caterers to setup menus,and manage orders. The app also allows
+                  customer to order a meal, modify their orders, check their order history and also have a quick glance at the trending
+                  menus.</p>
 
             </div>
 
@@ -26,16 +27,7 @@ const Footer = () => {
               <h6 className="text-uppercase font-weight-bold text-white">Products</h6>
               <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto hr-58"/>
                 <p>
-                  <a href="#!">MDBootstrap</a>
-                </p>
-                <p>
-                  <a href="#!">MDWordPress</a>
-                </p>
-                <p>
-                  <a href="#!">BrandFlow</a>
-                </p>
-                <p>
-                  <a href="#!">Bootstrap Angular</a>
+                  <a href="#!">API</a>
                 </p>
 
             </div>
@@ -64,13 +56,13 @@ const Footer = () => {
               <h6 className="text-uppercase font-weight-bold text-white">Contact</h6>
               <hr className="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto hr-96"/>
                 <p>
-                  <i className="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+                  <i className="fa fa-home mr-3"></i> Kampala, BK St. 2817, UG</p>
                 <p>
-                  <i className="fa fa-envelope mr-3"></i> info@example.com</p>
+                  <i className="fa fa-envelope mr-3"></i> easymeal@example.com</p>
                 <p>
-                  <i className="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+                  <i className="fa fa-phone mr-3"></i> + 256 777 617 455</p>
                 <p>
-                  <i className="fa fa-print mr-3"></i> + 01 234 567 89</p>
+                  <i className="fa fa-print mr-3"></i> + 256 777 617 455</p>
 
             </div>
 

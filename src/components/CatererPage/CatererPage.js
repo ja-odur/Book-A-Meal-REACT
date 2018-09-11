@@ -21,6 +21,7 @@ export class CatererPage extends React.Component {
       activeTab: {
         edit_menu: true,
         add_meal: false,
+        order_history: false,
       },
 
       mealData: {
@@ -40,6 +41,8 @@ export class CatererPage extends React.Component {
     // this.testLogin();
     this.props.menuActions.loadMenu();
     this.props.orderActions.getOrdersCaterer();
+    this.props.orderActions.viewOrderHistory();
+
   }
 
   // testLogin = () => {
@@ -55,7 +58,9 @@ export class CatererPage extends React.Component {
     }
     else if (type === 'clearOrder'){
           this.props.orderActions.clearOrder(meal_id);
-        }
+          this.props.orderActions.viewOrderHistory();
+
+    }
     else if (type === "addMealsToMenu") {
       this.props.menuActions.addMealsToMenu({meal_ids: this.state.meal_ids});
     }
@@ -75,6 +80,7 @@ export class CatererPage extends React.Component {
         activeTab: {
           edit_menu: CatererPage.showItem(type, 'showMenu'),
           add_meal: CatererPage.showItem(type, 'showMeal'),
+          order_history: CatererPage.showItem(type, 'showOrderHistory'),
           mealAddStatus: "",
         },
       });
@@ -82,7 +88,10 @@ export class CatererPage extends React.Component {
 
     if(type === 'showMenu'){
       this.props.menuActions.loadMenu();
+    }
 
+    if(type === 'showOrderHistory'){
+      this.props.orderActions.viewOrderHistory();
     }
 
   };
@@ -161,6 +170,7 @@ export class CatererPage extends React.Component {
             menu={this.props.menu}
             meal_ids={this.state.meal_ids}
             orders={this.props.orders}
+            orderHistory={this.props.orderHistory}
           />
         </div>
         <Footer/>
@@ -181,6 +191,7 @@ CatererPage.propTypes = {
   menu: PropTypes.array.isRequired,
   errors: PropTypes.array,
   orders: PropTypes.array.isRequired,
+  orderHistory: PropTypes.array.isRequired,
   login: PropTypes.array.isRequired,
 };
 
@@ -192,6 +203,7 @@ export function mapStateToProps(state, ownProps) {
     meals: state.meals,
     menu: state.menu,
     orders: state.orders,
+    orderHistory: state.orderHistory,
   };
 }
 

@@ -7,6 +7,7 @@ const SideBarCaterer =({tabs, onClick}) => {
       <ul>
         <li className={tabs.edit_menu ? "active" : ""} onClick={onClick('showMenu')}><a href="">Edit Menu</a></li>
         <li className={tabs.add_meal ? "active" : ""} onClick={onClick('showMeal')}><a href="">Add Meal</a></li>
+        <li className={tabs.order_history ? "active" : ""} onClick={onClick('showOrderHistory')}><a href="">Order History</a></li>
         <li className="splitter"></li>
         <li><a href="#!" id="logout">LogOut</a></li>
       </ul>

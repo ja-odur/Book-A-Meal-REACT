@@ -16,8 +16,8 @@ You can find the most recent version of this guide [here](https://github.com/fac
 # Getting started.
 The following commands will enable you run this on your machine.
 
-# Prerequisties.
-You should `npm` installed on your machine. If not follow directions here https://www.npmjs.com/get-npm.
+# prerequisite.
+You should `npm` installed on your machine. If not follow directions [here](https://www.npmjs.com/get-npm).
 
 # Installation
 Run this command  ```https://github.com/jaodur/Book-A-Meal-REACT/tree/develop``` to clone the repository.

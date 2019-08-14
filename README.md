@@ -1,6 +1,6 @@
 # Book-A-Meal-REACT
-[![Build Status](https://travis-ci.org/jaodur/Book-A-Meal-REACT.svg?branch=develop)](https://travis-ci.org/jaodur/Book-A-Meal-REACT)
-[![Coverage Status](https://coveralls.io/repos/github/ja-odur/Book-A-Meal-REACT/badge.svg?branch=develop&service=github)](https://coveralls.io/github/jaodur/Book-A-Meal-REACT?branch=develop)
+[![Build Status](https://travis-ci.org/ja-odur/Book-A-Meal-REACT.svg?branch=develop)](https://travis-ci.org/jaodur/Book-A-Meal-REACT)
+[![Coverage Status](https://coveralls.io/repos/github/jaodur/Book-A-Meal-REACT/badge.svg?branch=develop&service=github)](https://coveralls.io/github/jaodur/Book-A-Meal-REACT?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b3f61315e3a9156ccdac/maintainability)](https://codeclimate.com/github/jaodur/Book-A-Meal-REACT/maintainability)
 
 Is a web based app that enables  several caterers to setup menus,and manage orders. The app also allows
